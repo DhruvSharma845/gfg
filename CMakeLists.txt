@@ -4,9 +4,13 @@ project(gfg VERSION 0.1.0)
 # include(CTest)
 # enable_testing()
 
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 add_subdirectory(googletest-release-1.12.1)
 enable_testing()
-include_directories(googletest-release-1.12.1/googletest/cmake)
+include_directories(googletest-release-1.12.1/googletest/include)
 
 include_directories(headers)
 
