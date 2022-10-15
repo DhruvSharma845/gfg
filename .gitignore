@@ -1,0 +1,9 @@
+build/
+.vs
+
+*.tar.gz
+
+.github
+CONTRIBUTORS
+CONTRIBUTING.md
+WORKSPACE
