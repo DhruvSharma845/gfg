@@ -8,6 +8,7 @@ add_subdirectory(googletest-release-1.12.1)
 enable_testing()
 include_directories(googletest-release-1.12.1/googletest/cmake)
 
+include_directories(headers)
 
 add_executable(gfg main.cpp tests.cpp)
 target_link_libraries(gfg PRIVATE gtest)
