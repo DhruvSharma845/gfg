@@ -3,6 +3,7 @@
 
 #include <level_order_traversal_in_spiral_form.h>
 #include <queue_using_stacks.h>
+#include <maximum_of_size_k_subarrays.h>
 
 /**
  * TEST(x, y) {
@@ -36,6 +37,19 @@ TEST(QueueUsingStack, TryOperations) {
     qus.dequeue();
     ASSERT_EQ(0, qus.size());
     EXPECT_EQ(std::numeric_limits<int>::min(), qus.front());
+}
+
+TEST(SizeKSubarrayMaximums, SampleArray) {
+    SizeKSubarrayMaximums sm;
+    std::vector<int> arr{1, 2, 3, 1, 4, 5, 4, 3, 2};
+    auto res = sm.getMaximumOfAllSubarrays(arr, 3);
+
+    const std::vector<int> expectedRes{3, 3, 4, 5, 5, 5, 4};
+
+    ASSERT_EQ(res.size(), expectedRes.size());
+    for(int i = 0; i < res.size(); ++i) {
+        EXPECT_EQ(res[i], expectedRes[i]);
+    }
 }
 
 int runAllTests() {
