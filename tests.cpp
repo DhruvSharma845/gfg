@@ -4,6 +4,7 @@
 #include <level_order_traversal_in_spiral_form.h>
 #include <queue_using_stacks.h>
 #include <maximum_of_size_k_subarrays.h>
+#include <tour_visiting_all_petrol_pumps.h>
 
 /**
  * TEST(x, y) {
@@ -50,6 +51,15 @@ TEST(SizeKSubarrayMaximums, SampleArray) {
     for(int i = 0; i < res.size(); ++i) {
         EXPECT_EQ(res[i], expectedRes[i]);
     }
+}
+
+TEST(PetrolPumpsTour, SampleInfo) {
+
+    std::vector<std::pair<int, int>> info{{4,6}, {6,3}, {3,7}};
+
+    PetrolPumpsTour ppt;
+    auto resultIndex = ppt.getIndexOfPetrolPumpThatCoverAllPetrolPumps(info);
+    ASSERT_EQ(2, resultIndex);
 }
 
 int runAllTests() {
