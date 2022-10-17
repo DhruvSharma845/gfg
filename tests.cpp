@@ -6,6 +6,7 @@
 #include <maximum_of_size_k_subarrays.h>
 #include <tour_visiting_all_petrol_pumps.h>
 #include <pair_with_given_sum.h>
+#include <length_of_loop_in_linked_list.h>
 
 /**
  * TEST(x, y) {
@@ -73,6 +74,14 @@ TEST(PairWithGivenSum, ArrayWhereDoesNotExists) {
     std::vector<int> input{1, 2, 1, 0, 5};
     PairWithGivenSum pgs;
     ASSERT_EQ(pgs.isPairWithSumKExists(input, 0), false); 
+}
+
+TEST(LoopLengthLinkedList, SampleLL) {
+    LoopLengthLinkedList ll;
+
+    auto [hasLoop, loopCount] = ll.detectAndCountLoop();
+    ASSERT_EQ(true, hasLoop);
+    ASSERT_EQ(4, loopCount);
 }
 
 int runAllTests() {
