@@ -5,6 +5,7 @@
 #include <queue_using_stacks.h>
 #include <maximum_of_size_k_subarrays.h>
 #include <tour_visiting_all_petrol_pumps.h>
+#include <pair_with_given_sum.h>
 
 /**
  * TEST(x, y) {
@@ -60,6 +61,18 @@ TEST(PetrolPumpsTour, SampleInfo) {
     PetrolPumpsTour ppt;
     auto resultIndex = ppt.getIndexOfPetrolPumpThatCoverAllPetrolPumps(info);
     ASSERT_EQ(2, resultIndex);
+}
+
+TEST(PairWithGivenSum, ArrayWhereExists) {
+    std::vector<int> input{0, -1, 2, -3, 1};
+    PairWithGivenSum pgs;
+    ASSERT_EQ(pgs.isPairWithSumKExists(input, -2), true); 
+}
+
+TEST(PairWithGivenSum, ArrayWhereDoesNotExists) {
+    std::vector<int> input{1, 2, 1, 0, 5};
+    PairWithGivenSum pgs;
+    ASSERT_EQ(pgs.isPairWithSumKExists(input, 0), false); 
 }
 
 int runAllTests() {
