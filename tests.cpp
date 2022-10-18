@@ -7,6 +7,7 @@
 #include <tour_visiting_all_petrol_pumps.h>
 #include <pair_with_given_sum.h>
 #include <length_of_loop_in_linked_list.h>
+#include <is_two_nodes_cousin.h>
 
 /**
  * TEST(x, y) {
@@ -83,6 +84,27 @@ TEST(LoopLengthLinkedList, SampleLL) {
     ASSERT_EQ(true, hasLoop);
     ASSERT_EQ(4, loopCount);
 }
+
+TEST(CousinsInBinaryTree, CheckBothPositiveAndNegativeCases) {
+    BinaryTree<int> bt;
+    using Dir = BinaryTreeNode<int>::Direction;
+    bt.addRoot(6);
+    auto* root = bt.getRoot();
+    root->addChild(3, Dir::Left);
+    root->addChild(5, Dir::Right);
+
+    root->getLeft()->addChild(7, Dir::Left);
+    root->getLeft()->addChild(8, Dir::Right);
+
+    root->getRight()->addChild(1, Dir::Left);
+    root->getRight()->addChild(3, Dir::Right);
+
+    CousinsInBinaryTree cbt;
+
+    EXPECT_EQ(true, cbt.isCousin(bt.getRoot(), root->getLeft()->getLeft(), root->getRight()->getLeft()));
+    EXPECT_EQ(false, cbt.isCousin(bt.getRoot(), root->getLeft()->getLeft(), root->getRight()));
+}
+
 
 int runAllTests() {
     ::testing::InitGoogleTest();
