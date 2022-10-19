@@ -8,6 +8,7 @@
 #include <pair_with_given_sum.h>
 #include <length_of_loop_in_linked_list.h>
 #include <is_two_nodes_cousin.h>
+#include <k_largest_elements_in_array.h>
 
 /**
  * TEST(x, y) {
@@ -103,6 +104,19 @@ TEST(CousinsInBinaryTree, CheckBothPositiveAndNegativeCases) {
 
     EXPECT_EQ(true, cbt.isCousin(bt.getRoot(), root->getLeft()->getLeft(), root->getRight()->getLeft()));
     EXPECT_EQ(false, cbt.isCousin(bt.getRoot(), root->getLeft()->getLeft(), root->getRight()));
+}
+
+TEST(KLargestElementsArray, SampleArray) {
+    KLargestElementsArray ka;
+    std::vector<int> v{1, 23, 12, 9, 30, 2, 50};
+    auto res = ka.getKLargestElements(v, 3);
+    std::sort(res.begin(), res.end(), std::greater<int>());
+
+    std::vector<int> expectedRes{50, 30, 23};
+    ASSERT_EQ(res.size(), expectedRes.size());
+    for(int i = 0; i < res.size(); ++i) {
+        EXPECT_EQ(res[i], expectedRes[i]);
+    }
 }
 
 
