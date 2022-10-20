@@ -12,6 +12,8 @@ public:
     BinaryTreeNode<T>* getLeft() { return left; }
     BinaryTreeNode<T>* getRight() { return right; }
     T getData() { return data; }
+    void setLeft(BinaryTreeNode<T>* node) { left = node; }
+    void setRight(BinaryTreeNode<T>* node) { right = node; }
 private:
     T data;
     BinaryTreeNode<T>* left;

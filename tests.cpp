@@ -9,6 +9,7 @@
 #include <length_of_loop_in_linked_list.h>
 #include <is_two_nodes_cousin.h>
 #include <k_largest_elements_in_array.h>
+#include <lowest_common_ancestor_bst.h>
 
 /**
  * TEST(x, y) {
@@ -117,6 +118,21 @@ TEST(KLargestElementsArray, SampleArray) {
     for(int i = 0; i < res.size(); ++i) {
         EXPECT_EQ(res[i], expectedRes[i]);
     }
+}
+
+TEST(LowestCommonAncestorBST, SampleTree) {
+    BinarySearchTree<int> bst;
+    bst.insert(20);
+    bst.insert(8);
+    bst.insert(22);
+    bst.insert(4);
+    bst.insert(12);
+    bst.insert(10);
+    bst.insert(14);
+
+    LowestCommonAncestorBST lca;
+    EXPECT_EQ(12, lca.getLCA(bst.getRoot(), 10, 14));
+    EXPECT_EQ(8, lca.getLCA(bst.getRoot(), 8, 14));
 }
 
 
