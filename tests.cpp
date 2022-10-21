@@ -11,6 +11,7 @@
 #include <k_largest_elements_in_array.h>
 #include <lowest_common_ancestor_bst.h>
 #include <smallest_window_having_all_characters.h>
+#include <depth_first_search.h>
 
 /**
  * TEST(x, y) {
@@ -140,6 +141,21 @@ TEST(SmallestWindowWithAllCharsOfPattern, SampleStringAndPattern) {
     SmallestWindowWithAllCharsOfPattern swp;
     ASSERT_EQ(swp.getSmallestSubstring(std::string{"this is a test string"}, std::string{"tist"}), std::string{"t stri"});
     ASSERT_EQ(swp.getSmallestSubstring(std::string{"this is a test string"}, std::string{"xyz"}), std::string{""});
+}
+
+TEST(DepthFirstSearch, SampleGraph) {
+    UndirectedUnweightedGraph<int> g(4);
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(1, 2);
+    g.addEdge(2, 3);
+    DepthFirstSearch<int> dfs;
+    std::vector<int> result = dfs.doDFS(g, 0);
+    ASSERT_EQ(4, result.size());
+    std::vector<int> expectedRes{0, 1, 2, 3};
+    for(int i = 0; i < result.size(); ++i) {
+        EXPECT_EQ(result[i], expectedRes[i]);
+    }
 }
 
 
