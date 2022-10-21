@@ -10,6 +10,7 @@
 #include <is_two_nodes_cousin.h>
 #include <k_largest_elements_in_array.h>
 #include <lowest_common_ancestor_bst.h>
+#include <smallest_window_having_all_characters.h>
 
 /**
  * TEST(x, y) {
@@ -133,6 +134,12 @@ TEST(LowestCommonAncestorBST, SampleTree) {
     LowestCommonAncestorBST lca;
     EXPECT_EQ(12, lca.getLCA(bst.getRoot(), 10, 14));
     EXPECT_EQ(8, lca.getLCA(bst.getRoot(), 8, 14));
+}
+
+TEST(SmallestWindowWithAllCharsOfPattern, SampleStringAndPattern) {
+    SmallestWindowWithAllCharsOfPattern swp;
+    ASSERT_EQ(swp.getSmallestSubstring(std::string{"this is a test string"}, std::string{"tist"}), std::string{"t stri"});
+    ASSERT_EQ(swp.getSmallestSubstring(std::string{"this is a test string"}, std::string{"xyz"}), std::string{""});
 }
 
 
