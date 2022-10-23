@@ -12,6 +12,7 @@
 #include <lowest_common_ancestor_bst.h>
 #include <smallest_window_having_all_characters.h>
 #include <depth_first_search.h>
+#include <search_in_sorted_rotated_array.h>
 
 /**
  * TEST(x, y) {
@@ -156,6 +157,13 @@ TEST(DepthFirstSearch, SampleGraph) {
     for(int i = 0; i < result.size(); ++i) {
         EXPECT_EQ(result[i], expectedRes[i]);
     }
+}
+
+TEST(SearchInSortedAndRotatedArray, SampleArray) {
+    SearchInSortedAndRotatedArray ssra;
+    auto [isFound, index] = ssra.getIndex(std::vector<int>{5,6,7,8,9,10,1,2,3}, 3);
+    EXPECT_EQ(isFound, true);
+    EXPECT_EQ(index, 8);
 }
 
 
