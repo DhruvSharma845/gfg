@@ -13,6 +13,7 @@
 #include <smallest_window_having_all_characters.h>
 #include <depth_first_search.h>
 #include <search_in_sorted_rotated_array.h>
+#include <sort_elements_by_frequency.h>
 
 /**
  * TEST(x, y) {
@@ -166,6 +167,17 @@ TEST(SearchInSortedAndRotatedArray, SampleArray) {
     EXPECT_EQ(index, 8);
 }
 
+TEST(SortArrayByFrequency, SampleArray) {
+    std::vector<int> arr{2, 5, 2, 8, 5, 6, 8, 8};
+    SortArrayByFrequency saf;
+    saf.doSort(arr);
+
+    std::vector<int> expectedRes{8, 8, 8, 2, 2, 5, 5, 6};
+    ASSERT_EQ(expectedRes.size(), arr.size());
+    for(int i = 0; i < arr.size(); ++i) {
+        EXPECT_EQ(arr[i], expectedRes[i]);
+    }
+}
 
 int runAllTests() {
     ::testing::InitGoogleTest();
