@@ -16,6 +16,7 @@
 #include <sort_elements_by_frequency.h>
 #include <rearrange_same_characters_d_distance.h>
 #include <largest_sum_contiguous_subarray.h>
+#include <wildcard_character_matching.h>
 
 /**
  * TEST(x, y) {
@@ -192,6 +193,13 @@ TEST(LargestSumOfContiguousSubarray, SampleArray) {
     std::vector<int> v{-2, -3, 4, -1, -2, 1, 5, -3};
     LargestSumOfContiguousSubarray ls;
     ASSERT_EQ(7, ls.getMaximumSum(v));
+}
+
+TEST(WildcardPatternMatcher, SampleStringsAndPatterns) {
+    WildcardPatternMatcher wpm;
+    EXPECT_EQ(true, wpm.doesMatch("geeks", "g*ks"));
+    EXPECT_EQ(false, wpm.doesMatch("gee", "g*k"));
+    EXPECT_EQ(true, wpm.doesMatch("geeks", "ge?ks"));
 }
 
 int runAllTests() {
