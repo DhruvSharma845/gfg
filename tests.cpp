@@ -15,6 +15,7 @@
 #include <search_in_sorted_rotated_array.h>
 #include <sort_elements_by_frequency.h>
 #include <rearrange_same_characters_d_distance.h>
+#include <largest_sum_contiguous_subarray.h>
 
 /**
  * TEST(x, y) {
@@ -185,6 +186,12 @@ TEST(RearrangeCharactersDDistanceAway, SampleString) {
     ASSERT_EQ("bcabca", rc.doRearrange("aacbbc", 3));
     ASSERT_EQ("eskeskegoegrf", rc.doRearrange("geeksforgeeks", 3));
     ASSERT_EQ("", rc.doRearrange("aaa", 3));
+}
+
+TEST(LargestSumOfContiguousSubarray, SampleArray) {
+    std::vector<int> v{-2, -3, 4, -1, -2, 1, 5, -3};
+    LargestSumOfContiguousSubarray ls;
+    ASSERT_EQ(7, ls.getMaximumSum(v));
 }
 
 int runAllTests() {
