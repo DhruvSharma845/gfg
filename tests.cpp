@@ -14,6 +14,7 @@
 #include <depth_first_search.h>
 #include <search_in_sorted_rotated_array.h>
 #include <sort_elements_by_frequency.h>
+#include <rearrange_same_characters_d_distance.h>
 
 /**
  * TEST(x, y) {
@@ -177,6 +178,13 @@ TEST(SortArrayByFrequency, SampleArray) {
     for(int i = 0; i < arr.size(); ++i) {
         EXPECT_EQ(arr[i], expectedRes[i]);
     }
+}
+
+TEST(RearrangeCharactersDDistanceAway, SampleString) {
+    RearrangeCharactersDDistanceAway rc;
+    ASSERT_EQ("bcabca", rc.doRearrange("aacbbc", 3));
+    ASSERT_EQ("eskeskegoegrf", rc.doRearrange("geeksforgeeks", 3));
+    ASSERT_EQ("", rc.doRearrange("aaa", 3));
 }
 
 int runAllTests() {
