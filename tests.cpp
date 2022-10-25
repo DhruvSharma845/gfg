@@ -17,6 +17,7 @@
 #include <rearrange_same_characters_d_distance.h>
 #include <largest_sum_contiguous_subarray.h>
 #include <wildcard_character_matching.h>
+#include <permutations_of_string.h>
 
 /**
  * TEST(x, y) {
@@ -200,6 +201,17 @@ TEST(WildcardPatternMatcher, SampleStringsAndPatterns) {
     EXPECT_EQ(true, wpm.doesMatch("geeks", "g*ks"));
     EXPECT_EQ(false, wpm.doesMatch("gee", "g*k"));
     EXPECT_EQ(true, wpm.doesMatch("geeks", "ge?ks"));
+}
+
+TEST(PermutationsOfString, SampleString) {
+    PermutationsOfString ps;
+    std::vector<std::string> res = ps.getAllPermutations("ABC");
+
+    ASSERT_EQ(6, res.size());
+    std::vector<std::string> expectedRes{"ABC", "ACB", "BAC", "BCA", "CBA", "CAB"};
+    for(int i = 0; i < res.size(); ++i) {
+        EXPECT_EQ(res[i], expectedRes[i]);
+    }
 }
 
 int runAllTests() {
