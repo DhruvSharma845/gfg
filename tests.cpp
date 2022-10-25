@@ -19,6 +19,7 @@
 #include <wildcard_character_matching.h>
 #include <permutations_of_string.h>
 #include <median_sorted_arrays_of_same_size.h>
+#include <majority_element.h>
 
 /**
  * TEST(x, y) {
@@ -220,6 +221,12 @@ TEST(MedianOfSameSizedSortedArrays, SampleArrays) {
     std::vector<int> a{1, 6, 7, 8};
     std::vector<int> b{2, 3, 4, 5};
     ASSERT_EQ(4, mss.getMedian(a, b));
+}
+
+TEST(MajorityElement, SampleArray) {
+    std::vector<int> v{3, 3, 4, 2, 4, 4, 2, 4, 4};
+    MajorityElement me;
+    ASSERT_EQ(4, me.getMajorityElement(v));
 }
 
 int runAllTests() {
