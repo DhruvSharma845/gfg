@@ -18,6 +18,7 @@
 #include <largest_sum_contiguous_subarray.h>
 #include <wildcard_character_matching.h>
 #include <permutations_of_string.h>
+#include <median_sorted_arrays_of_same_size.h>
 
 /**
  * TEST(x, y) {
@@ -212,6 +213,13 @@ TEST(PermutationsOfString, SampleString) {
     for(int i = 0; i < res.size(); ++i) {
         EXPECT_EQ(res[i], expectedRes[i]);
     }
+}
+
+TEST(MedianOfSameSizedSortedArrays, SampleArrays) {
+    MedianOfSameSizedSortedArrays mss;
+    std::vector<int> a{1, 6, 7, 8};
+    std::vector<int> b{2, 3, 4, 5};
+    ASSERT_EQ(4, mss.getMedian(a, b));
 }
 
 int runAllTests() {
