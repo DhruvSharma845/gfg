@@ -11,10 +11,11 @@ public:
 
 std::optional<SLLNode<int>*> NthNodeFromEndSinglyLinkedList::getNthNodeFromEnd(const SinglyLinkedList<int>& sll, int N) {
     SLLNode<int>* next = sll.getHead(); 
-    for (int i = 0; i < N && next != nullptr; ++i) {
+    int i = 0;
+    for (; i < N && next != nullptr; ++i) {
         next = next->getNext();
     }
-    if(next == nullptr) {
+    if(i < N && next == nullptr) {
         return std::nullopt;
     }
 
