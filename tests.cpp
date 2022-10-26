@@ -21,6 +21,7 @@
 #include <median_sorted_arrays_of_same_size.h>
 #include <majority_element.h>
 #include <middle_linked_list.h>
+#include <nth_node_end_linked_list.h>
 
 /**
  * TEST(x, y) {
@@ -242,6 +243,20 @@ TEST(MiddleOfLinkedList, SampleList) {
     auto* result = mll.getMiddle(sll);
     ASSERT_TRUE(result != nullptr);
     ASSERT_EQ(result->getData(), 3);
+}
+
+TEST(NthNodeFromEndSinglyLinkedList, SampleLinkedList) {
+    SinglyLinkedList<int> sll;
+    sll.addHead(1);
+    auto* head = sll.getHead();
+    head->setNext(new SLLNode<int>(2, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(3, nullptr));
+    head->getNext()->getNext()->setNext(new SLLNode<int>(4, nullptr));
+
+    NthNodeFromEndSinglyLinkedList nn;
+    const auto& result = nn.getNthNodeFromEnd(sll, 3);
+    ASSERT_TRUE(result.has_value());
+    ASSERT_EQ(result.value()->getData(), 2);
 }
 
 int runAllTests() {
