@@ -20,6 +20,7 @@
 #include <permutations_of_string.h>
 #include <median_sorted_arrays_of_same_size.h>
 #include <majority_element.h>
+#include <middle_linked_list.h>
 
 /**
  * TEST(x, y) {
@@ -227,6 +228,20 @@ TEST(MajorityElement, SampleArray) {
     std::vector<int> v{3, 3, 4, 2, 4, 4, 2, 4, 4};
     MajorityElement me;
     ASSERT_EQ(4, me.getMajorityElement(v));
+}
+
+TEST(MiddleOfLinkedList, SampleList) {
+    SinglyLinkedList<int> sll;
+    sll.addHead(1);
+    auto* head = sll.getHead();
+    head->setNext(new SLLNode<int>(2, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(3, nullptr));
+    head->getNext()->getNext()->setNext(new SLLNode<int>(4, nullptr));
+    head->getNext()->getNext()->getNext()->setNext(new SLLNode<int>(5, nullptr));
+    MiddleOfLinkedList mll;
+    auto* result = mll.getMiddle(sll);
+    ASSERT_TRUE(result != nullptr);
+    ASSERT_EQ(result->getData(), 3);
 }
 
 int runAllTests() {

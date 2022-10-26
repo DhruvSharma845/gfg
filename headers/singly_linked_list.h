@@ -7,6 +7,7 @@ public:
     void addNext(T _data);
     void setNext(SLLNode<T>* node) { next = node; }
     SLLNode<T>* getNext() { return next; }
+    T getData() const { return data; }
 private:
     T data;
     SLLNode<T>* next;
@@ -22,7 +23,7 @@ class SinglyLinkedList {
 public:
     SinglyLinkedList(): head{nullptr} {}
     void addHead(T _data);
-    SLLNode<T>* getHead();
+    SLLNode<T>* getHead() const;
 private:
     SLLNode<T>* head;
 };
@@ -33,6 +34,6 @@ void SinglyLinkedList<T>::addHead(T _data) {
 }
 
 template <typename T>
-SLLNode<T>* SinglyLinkedList<T>::getHead() {
+SLLNode<T>* SinglyLinkedList<T>::getHead() const {
     return head;
 }
