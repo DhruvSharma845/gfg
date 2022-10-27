@@ -22,6 +22,7 @@
 #include <majority_element.h>
 #include <middle_linked_list.h>
 #include <nth_node_end_linked_list.h>
+#include <reverse_stack_recursive.h>
 
 /**
  * TEST(x, y) {
@@ -257,6 +258,29 @@ TEST(NthNodeFromEndSinglyLinkedList, SampleLinkedList) {
     const auto& result = nn.getNthNodeFromEnd(sll, 3);
     ASSERT_TRUE(result.has_value());
     ASSERT_EQ(result.value()->getData(), 2);
+}
+
+TEST(RecursiveStackReversal, SampleStack) {
+    std::stack<int> st;
+    st.push(4);
+    st.push(3);
+    st.push(2);
+    st.push(1);
+    RecursiveStackReversal rsr;
+    rsr.doReversal(st);
+
+    std::stack<int> expectedSt;
+    expectedSt.push(1);
+    expectedSt.push(2);
+    expectedSt.push(3);
+    expectedSt.push(4);
+    ASSERT_EQ(st.size(), expectedSt.size());
+    while(!expectedSt.empty()) {
+        EXPECT_EQ(expectedSt.top(), st.top());
+        expectedSt.pop();
+        st.pop();
+    }
+
 }
 
 int runAllTests() {
