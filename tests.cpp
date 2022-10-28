@@ -23,6 +23,7 @@
 #include <middle_linked_list.h>
 #include <nth_node_end_linked_list.h>
 #include <reverse_stack_recursive.h>
+#include <minimum_bracket_reversals_to_balance.h>
 
 /**
  * TEST(x, y) {
@@ -281,6 +282,13 @@ TEST(RecursiveStackReversal, SampleStack) {
         st.pop();
     }
 
+}
+
+TEST(MinBracketReversalsToBalance, SampleExpression) {
+    MinBracketReversalsToBalance mbr;
+    ASSERT_EQ(3, mbr.getCount("}{{}}{{{"));
+    ASSERT_EQ(2, mbr.getCount("{{{{"));
+    ASSERT_EQ(1, mbr.getCount("{{{{}}"));
 }
 
 int runAllTests() {
