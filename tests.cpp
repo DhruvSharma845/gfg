@@ -26,6 +26,7 @@
 #include <minimum_bracket_reversals_to_balance.h>
 #include <sum_min_max_subarrays_size_k.h>
 #include <sum_right_leaves.h>
+#include <check_if_binary_tree_is_bst.h>
 
 /**
  * TEST(x, y) {
@@ -315,6 +316,34 @@ TEST(SumOfRightLeavesInBinaryTree, SampleTree) {
 
     SumOfRightLeavesInBinaryTree srl;
     ASSERT_EQ(14, srl.getSumOfRightLeaves(bt));
+}
+
+TEST(IsBinaryTreeBST, SampleTreePositive) {
+    BinaryTree<int> bt;
+    bt.addRoot(4);
+    BinaryTreeNode<int>* root = bt.getRoot();
+    root->addChild(2, BinaryTreeNode<int>::Direction::Left);
+    root->addChild(5, BinaryTreeNode<int>::Direction::Right);
+
+    root->getLeft()->addChild(1, BinaryTreeNode<int>::Direction::Left);
+    root->getLeft()->addChild(3, BinaryTreeNode<int>::Direction::Right);
+    
+    IsBinaryTreeBST ibt;
+    ASSERT_TRUE(ibt.doCheck(bt));
+}
+
+TEST(IsBinaryTreeBST, SampleTreeNegative) {
+    BinaryTree<int> bt;
+    bt.addRoot(4);
+    BinaryTreeNode<int>* root = bt.getRoot();
+    root->addChild(2, BinaryTreeNode<int>::Direction::Left);
+    root->addChild(0, BinaryTreeNode<int>::Direction::Right);
+
+    root->getLeft()->addChild(1, BinaryTreeNode<int>::Direction::Left);
+    root->getLeft()->addChild(3, BinaryTreeNode<int>::Direction::Right);
+    
+    IsBinaryTreeBST ibt;
+    ASSERT_FALSE(ibt.doCheck(bt));
 }
 
 int runAllTests() {
