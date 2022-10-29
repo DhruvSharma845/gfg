@@ -24,6 +24,7 @@
 #include <nth_node_end_linked_list.h>
 #include <reverse_stack_recursive.h>
 #include <minimum_bracket_reversals_to_balance.h>
+#include <sum_min_max_subarrays_size_k.h>
 
 /**
  * TEST(x, y) {
@@ -289,6 +290,12 @@ TEST(MinBracketReversalsToBalance, SampleExpression) {
     ASSERT_EQ(3, mbr.getCount("}{{}}{{{"));
     ASSERT_EQ(2, mbr.getCount("{{{{"));
     ASSERT_EQ(1, mbr.getCount("{{{{}}"));
+}
+
+TEST(SumMinMaxOfSubarraysOfSizeK, SampleArray) {
+    std::vector<int> v{2, 5, -1, 7, -3, -1, -2};
+    SumMinMaxOfSubarraysOfSizeK smm;
+    ASSERT_EQ(14, smm.getSum(v, 3));
 }
 
 int runAllTests() {
