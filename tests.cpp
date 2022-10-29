@@ -27,6 +27,7 @@
 #include <sum_min_max_subarrays_size_k.h>
 #include <sum_right_leaves.h>
 #include <check_if_binary_tree_is_bst.h>
+#include <sort_k_sorted_array.h>
 
 /**
  * TEST(x, y) {
@@ -344,6 +345,19 @@ TEST(IsBinaryTreeBST, SampleTreeNegative) {
     
     IsBinaryTreeBST ibt;
     ASSERT_FALSE(ibt.doCheck(bt));
+}
+
+TEST(KSortedArraySorter, SampleArray) {
+    std::vector<int> v{6, 5, 3, 2, 8, 10, 9};
+    KSortedArraySorter ksas;
+    ksas.doSort(v, 3);
+
+    std::vector<int> expectedRes{2, 3, 5, 6, 8, 9, 10};
+    ASSERT_EQ(expectedRes.size(), v.size());
+    
+    for(int i = 0; i < v.size(); ++i) {
+        EXPECT_EQ(v[i], expectedRes[i]);
+    }
 }
 
 int runAllTests() {
