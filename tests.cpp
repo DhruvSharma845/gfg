@@ -25,6 +25,7 @@
 #include <reverse_stack_recursive.h>
 #include <minimum_bracket_reversals_to_balance.h>
 #include <sum_min_max_subarrays_size_k.h>
+#include <sum_right_leaves.h>
 
 /**
  * TEST(x, y) {
@@ -296,6 +297,24 @@ TEST(SumMinMaxOfSubarraysOfSizeK, SampleArray) {
     std::vector<int> v{2, 5, -1, 7, -3, -1, -2};
     SumMinMaxOfSubarraysOfSizeK smm;
     ASSERT_EQ(14, smm.getSum(v, 3));
+}
+
+TEST(SumOfRightLeavesInBinaryTree, SampleTree) {
+    BinaryTree<int> bt;
+    bt.addRoot(1);
+    BinaryTreeNode<int>* root = bt.getRoot();
+    root->addChild(2, BinaryTreeNode<int>::Direction::Left);
+    root->addChild(3, BinaryTreeNode<int>::Direction::Right);
+
+    root->getLeft()->addChild(4, BinaryTreeNode<int>::Direction::Left);
+    root->getLeft()->addChild(5, BinaryTreeNode<int>::Direction::Right);
+    root->getLeft()->getLeft()->addChild(2, BinaryTreeNode<int>::Direction::Right);
+
+    root->getRight()->addChild(8, BinaryTreeNode<int>::Direction::Right);
+    root->getRight()->getRight()->addChild(7, BinaryTreeNode<int>::Direction::Right);
+
+    SumOfRightLeavesInBinaryTree srl;
+    ASSERT_EQ(14, srl.getSumOfRightLeaves(bt));
 }
 
 int runAllTests() {

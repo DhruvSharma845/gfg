@@ -36,7 +36,7 @@ class BinaryTree {
 public:
     BinaryTree();
     void addRoot(T data);
-    BinaryTreeNode<T>* getRoot();
+    BinaryTreeNode<T>* getRoot() const;
 private:
     BinaryTreeNode<T>* root;
 };
@@ -50,7 +50,7 @@ void BinaryTree<T>::addRoot(T data) {
 }
 
 template <typename T>
-BinaryTreeNode<T>* BinaryTree<T>::getRoot() {
+BinaryTreeNode<T>* BinaryTree<T>::getRoot() const {
     return root;
 }
 
