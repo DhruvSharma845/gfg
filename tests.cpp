@@ -28,6 +28,7 @@
 #include <sum_right_leaves.h>
 #include <check_if_binary_tree_is_bst.h>
 #include <sort_k_sorted_array.h>
+#include <largest_subarray_with_equal_0_1.h>
 
 /**
  * TEST(x, y) {
@@ -358,6 +359,17 @@ TEST(KSortedArraySorter, SampleArray) {
     for(int i = 0; i < v.size(); ++i) {
         EXPECT_EQ(v[i], expectedRes[i]);
     }
+}
+
+TEST(LargestSubarrayWithEqualZeroesOnes, SampleArray) {
+    LargestSubarrayWithEqualZeroesOnes ls;
+    auto res1 = ls.getIndices({1, 0, 1, 1, 1, 0, 0});
+    ASSERT_TRUE(res1.has_value());
+    EXPECT_EQ(res1.value().first, 1);
+    EXPECT_EQ(res1.value().second, 6);
+
+    auto res2 = ls.getIndices({1, 1, 1, 1});
+    ASSERT_FALSE(res2.has_value());
 }
 
 int runAllTests() {
