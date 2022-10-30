@@ -31,6 +31,7 @@
 #include <largest_subarray_with_equal_0_1.h>
 #include <breadth_first_search.h>
 #include <pair_sum_closest_zero.h>
+#include <count_inversions.h>
 
 /**
  * TEST(x, y) {
@@ -395,6 +396,12 @@ TEST(PairSumClosestToZero, SampleArray) {
     ASSERT_TRUE(res.has_value());
     EXPECT_EQ(res.value().first, -80);
     EXPECT_EQ(res.value().second, 85);
+}
+
+TEST(CountInversions, SampleArrays) {
+    CountInversions ci;
+    ASSERT_EQ(5, ci.getInversionCount({1, 20, 6, 4, 5}));
+    ASSERT_EQ(6, ci.getInversionCount({8, 4, 2, 1}));
 }
 
 int runAllTests() {
