@@ -30,6 +30,7 @@
 #include <sort_k_sorted_array.h>
 #include <largest_subarray_with_equal_0_1.h>
 #include <breadth_first_search.h>
+#include <pair_sum_closest_zero.h>
 
 /**
  * TEST(x, y) {
@@ -385,6 +386,15 @@ TEST(BreadthFirstSearch, SampleGraph) {
     for(int i = 0; i < result.size(); ++i) {
         EXPECT_EQ(result[i], expectedRes[i]);
     }
+}
+
+TEST(PairSumClosestToZero, SampleArray) {
+    PairSumClosestToZero psc;
+    std::vector<int> v{1, 60, -10, 70, -80, 85};
+    auto res = psc.getPair(v);
+    ASSERT_TRUE(res.has_value());
+    EXPECT_EQ(res.value().first, -80);
+    EXPECT_EQ(res.value().second, 85);
 }
 
 int runAllTests() {
