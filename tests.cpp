@@ -29,6 +29,7 @@
 #include <check_if_binary_tree_is_bst.h>
 #include <sort_k_sorted_array.h>
 #include <largest_subarray_with_equal_0_1.h>
+#include <breadth_first_search.h>
 
 /**
  * TEST(x, y) {
@@ -370,6 +371,20 @@ TEST(LargestSubarrayWithEqualZeroesOnes, SampleArray) {
 
     auto res2 = ls.getIndices({1, 1, 1, 1});
     ASSERT_FALSE(res2.has_value());
+}
+
+TEST(BreadthFirstSearch, SampleGraph) {
+    UndirectedUnweightedGraph<int> g(4);
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(2, 3);
+    BreadthFirstSearch<int> bfs;
+    std::vector<int> result = bfs.doBFS(g, 2);
+    ASSERT_EQ(4, result.size());
+    std::vector<int> expectedRes{2, 0, 3, 1};
+    for(int i = 0; i < result.size(); ++i) {
+        EXPECT_EQ(result[i], expectedRes[i]);
+    }
 }
 
 int runAllTests() {
