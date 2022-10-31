@@ -32,6 +32,7 @@
 #include <breadth_first_search.h>
 #include <pair_sum_closest_zero.h>
 #include <count_inversions.h>
+#include <connect_n_ropes.h>
 
 /**
  * TEST(x, y) {
@@ -402,6 +403,11 @@ TEST(CountInversions, SampleArrays) {
     CountInversions ci;
     ASSERT_EQ(5, ci.getInversionCount({1, 20, 6, 4, 5}));
     ASSERT_EQ(6, ci.getInversionCount({8, 4, 2, 1}));
+}
+
+TEST(ConnectNRopes, SampleArray) {
+    ConnectNRopes cnr;
+    ASSERT_EQ(29, cnr.getMinimumCost({4,3,2,6}));
 }
 
 int runAllTests() {
