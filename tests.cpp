@@ -36,6 +36,7 @@
 #include <maximum_sum_no_two_elements_adjacent.h>
 #include <anagram_substring_search.h>
 #include <rat_in_maze.h>
+#include <count_frequencies_sorted_array.h>
 
 /**
  * TEST(x, y) {
@@ -446,6 +447,13 @@ TEST(RatInMaze, SampleMaze) {
         { 0, 1, 1, 1 }
     };
     ASSERT_TRUE(result == expectedResult);
+}
+
+TEST(FrequencyCountSortedArray, SampleArrays) {
+    FrequencyCountSortedArray fcsa;
+    ASSERT_EQ(4, fcsa.getCount({1, 1, 2, 2, 2, 2, 3}, 2));
+    ASSERT_EQ(2, fcsa.getCount({1, 1, 2, 2, 2, 2, 3}, 1));
+    ASSERT_EQ(0, fcsa.getCount({1, 1, 2, 2, 2, 2, 3}, 4));
 }
 
 int runAllTests() {
