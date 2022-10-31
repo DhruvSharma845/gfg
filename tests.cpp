@@ -34,6 +34,7 @@
 #include <count_inversions.h>
 #include <connect_n_ropes.h>
 #include <maximum_sum_no_two_elements_adjacent.h>
+#include <anagram_substring_search.h>
 
 /**
  * TEST(x, y) {
@@ -415,6 +416,17 @@ TEST(MaximumSumSuchNoTwoAdjacent, SampleArray) {
     MaximumSumSuchNoTwoAdjacent ms;
     ASSERT_EQ(110, ms.getSum({5, 5, 10, 100, 10, 5}));
     ASSERT_EQ(13, ms.getSum({3, 2, 7, 10}));
+}
+
+TEST(AnagramSubstringSearch, SampleStrings) {
+    AnagramSubstringSearch ass;
+    std::vector<int> result = ass.getIndices("BACDGABCDA", "ABCD");
+
+    ASSERT_EQ(3, result.size());
+    std::vector<int> expectedRes{0, 5, 6};
+    for(int i = 0; i < result.size(); ++i) {
+        EXPECT_EQ(result[i], expectedRes[i]);
+    }
 }
 
 int runAllTests() {
