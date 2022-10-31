@@ -35,6 +35,7 @@
 #include <connect_n_ropes.h>
 #include <maximum_sum_no_two_elements_adjacent.h>
 #include <anagram_substring_search.h>
+#include <rat_in_maze.h>
 
 /**
  * TEST(x, y) {
@@ -427,6 +428,24 @@ TEST(AnagramSubstringSearch, SampleStrings) {
     for(int i = 0; i < result.size(); ++i) {
         EXPECT_EQ(result[i], expectedRes[i]);
     }
+}
+
+TEST(RatInMaze, SampleMaze) {
+    RatInMaze rim;
+    std::vector<std::vector<int>> v{
+        { 1, 0, 0, 0 },
+        { 1, 1, 0, 1 },
+        { 0, 1, 0, 0 },
+        { 1, 1, 1, 1 }
+    };
+    auto result = rim.findPath(v);
+    std::vector<std::vector<int>> expectedResult{
+        { 1, 0, 0, 0 },
+        { 1, 1, 0, 0 },
+        { 0, 1, 0, 0 },
+        { 0, 1, 1, 1 }
+    };
+    ASSERT_TRUE(result == expectedResult);
 }
 
 int runAllTests() {
