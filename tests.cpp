@@ -33,6 +33,7 @@
 #include <pair_sum_closest_zero.h>
 #include <count_inversions.h>
 #include <connect_n_ropes.h>
+#include <maximum_sum_no_two_elements_adjacent.h>
 
 /**
  * TEST(x, y) {
@@ -408,6 +409,12 @@ TEST(CountInversions, SampleArrays) {
 TEST(ConnectNRopes, SampleArray) {
     ConnectNRopes cnr;
     ASSERT_EQ(29, cnr.getMinimumCost({4,3,2,6}));
+}
+
+TEST(MaximumSumSuchNoTwoAdjacent, SampleArray) {
+    MaximumSumSuchNoTwoAdjacent ms;
+    ASSERT_EQ(110, ms.getSum({5, 5, 10, 100, 10, 5}));
+    ASSERT_EQ(13, ms.getSum({3, 2, 7, 10}));
 }
 
 int runAllTests() {
