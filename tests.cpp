@@ -37,6 +37,7 @@
 #include <anagram_substring_search.h>
 #include <rat_in_maze.h>
 #include <count_frequencies_sorted_array.h>
+#include <find_number_odd_times.h>
 
 /**
  * TEST(x, y) {
@@ -454,6 +455,12 @@ TEST(FrequencyCountSortedArray, SampleArrays) {
     ASSERT_EQ(4, fcsa.getCount({1, 1, 2, 2, 2, 2, 3}, 2));
     ASSERT_EQ(2, fcsa.getCount({1, 1, 2, 2, 2, 2, 3}, 1));
     ASSERT_EQ(0, fcsa.getCount({1, 1, 2, 2, 2, 2, 3}, 4));
+}
+
+TEST(NumberOccuringOddNumOfTimes, SampleArray) {
+    NumberOccuringOddNumOfTimes noo;
+    ASSERT_EQ(3, noo.getNumber({1, 2, 3, 2, 3, 1, 3}));
+    ASSERT_EQ(5, noo.getNumber({5, 7, 2, 7, 5, 2, 5}));
 }
 
 int runAllTests() {
