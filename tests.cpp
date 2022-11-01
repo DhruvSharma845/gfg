@@ -38,6 +38,7 @@
 #include <rat_in_maze.h>
 #include <count_frequencies_sorted_array.h>
 #include <find_number_odd_times.h>
+#include <find_missing_number.h>
 
 /**
  * TEST(x, y) {
@@ -461,6 +462,12 @@ TEST(NumberOccuringOddNumOfTimes, SampleArray) {
     NumberOccuringOddNumOfTimes noo;
     ASSERT_EQ(3, noo.getNumber({1, 2, 3, 2, 3, 1, 3}));
     ASSERT_EQ(5, noo.getNumber({5, 7, 2, 7, 5, 2, 5}));
+}
+
+TEST(FindMissingNumber, SampleArray) {
+    FindMissingNumber fmn;
+    ASSERT_EQ(5, fmn.searchMissing({1, 2, 4, 6, 3, 7, 8}, 8));
+    ASSERT_EQ(4, fmn.searchMissing({1, 2, 3, 5}, 5));
 }
 
 int runAllTests() {
