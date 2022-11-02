@@ -39,6 +39,7 @@
 #include <count_frequencies_sorted_array.h>
 #include <find_number_odd_times.h>
 #include <find_missing_number.h>
+#include <check_sll_is_palindrome.h>
 
 /**
  * TEST(x, y) {
@@ -468,6 +469,19 @@ TEST(FindMissingNumber, SampleArray) {
     FindMissingNumber fmn;
     ASSERT_EQ(5, fmn.searchMissing({1, 2, 4, 6, 3, 7, 8}, 8));
     ASSERT_EQ(4, fmn.searchMissing({1, 2, 3, 5}, 5));
+}
+
+TEST(IsSLLPalindrome, SampleList) {
+    SinglyLinkedList<char> sll;
+    sll.addHead('R');
+    auto* head = sll.getHead();
+    head->setNext(new SLLNode<char>('A', nullptr));
+    head->getNext()->setNext(new SLLNode<char>('D', nullptr));
+    head->getNext()->getNext()->setNext(new SLLNode<char>('A', nullptr));
+    head->getNext()->getNext()->getNext()->setNext(new SLLNode<char>('R', nullptr));
+
+    IsSLLPalindrome isp;
+    ASSERT_TRUE(isp.doCheck(sll));
 }
 
 int runAllTests() {
