@@ -40,6 +40,15 @@
 #include <find_number_odd_times.h>
 #include <find_missing_number.h>
 #include <check_sll_is_palindrome.h>
+#include <next_greater_element.h>
+
+template <typename T>
+void testArrays(const std::vector<T>& result, const std::vector<T>& expected) {
+    ASSERT_EQ(expected.size(), result.size());
+    for(int i = 0; i < result.size(); ++i) {
+        EXPECT_EQ(result[i], expected[i]);
+    }
+}
 
 /**
  * TEST(x, y) {
@@ -482,6 +491,13 @@ TEST(IsSLLPalindrome, SampleList) {
 
     IsSLLPalindrome isp;
     ASSERT_TRUE(isp.doCheck(sll));
+}
+
+TEST(NextGreaterElement, SampleArrays) {
+    NextGreaterElement nge;
+    auto result = nge.getNextGreaterElements({ 4 , 5 , 2 , 25 });
+
+    testArrays<int>(result, {5, 25, 25, -1});
 }
 
 int runAllTests() {
