@@ -41,6 +41,7 @@
 #include <find_missing_number.h>
 #include <check_sll_is_palindrome.h>
 #include <next_greater_element.h>
+#include <negative_integer_window_size_k.h>
 
 template <typename T>
 void testArrays(const std::vector<T>& result, const std::vector<T>& expected) {
@@ -498,6 +499,12 @@ TEST(NextGreaterElement, SampleArrays) {
     auto result = nge.getNextGreaterElements({ 4 , 5 , 2 , 25 });
 
     testArrays<int>(result, {5, 25, 25, -1});
+}
+
+TEST(NegativeIntegerInWindow, SampleArray) {
+    NegativeIntegerInWindow niw;
+    auto result = niw.getNegativeIntegersInAllWindows({12, -1, -7, 8, -15, 30, 16, 28}, 3);
+    testArrays<int>(result, {-1, -1, -7, -15, -15, 0});
 }
 
 int runAllTests() {
