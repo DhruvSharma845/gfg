@@ -42,6 +42,7 @@
 #include <check_sll_is_palindrome.h>
 #include <next_greater_element.h>
 #include <negative_integer_window_size_k.h>
+#include <inorder_successor_binary_tree.h>
 
 template <typename T>
 void testArrays(const std::vector<T>& result, const std::vector<T>& expected) {
@@ -505,6 +506,25 @@ TEST(NegativeIntegerInWindow, SampleArray) {
     NegativeIntegerInWindow niw;
     auto result = niw.getNegativeIntegersInAllWindows({12, -1, -7, 8, -15, 30, 16, 28}, 3);
     testArrays<int>(result, {-1, -1, -7, -15, -15, 0});
+}
+
+TEST(InorderSuccessorBinaryTree, SampleTree) {
+    BinaryTree<int> bt;
+    using Dir = BinaryTreeNode<int>::Direction;
+    bt.addRoot(1);
+    auto* root = bt.getRoot();
+    root->addChild(2, Dir::Left);
+    root->addChild(3, Dir::Right);
+
+    root->getLeft()->addChild(4, Dir::Left);
+    root->getLeft()->addChild(5, Dir::Right);
+
+    root->getRight()->addChild(6, Dir::Right);
+
+    InorderSuccessorBinaryTree isbt;
+    
+    ASSERT_EQ(2, isbt.getInorderSuccessor(bt, 4));
+    ASSERT_EQ(1, isbt.getInorderSuccessor(bt, 5));
 }
 
 int runAllTests() {
