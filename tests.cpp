@@ -45,6 +45,7 @@
 #include <inorder_successor_binary_tree.h>
 #include <inorder_successor_bst.h>
 #include <merge_k_sorted_arrays.h>
+#include <four_elements_with_sum_x.h>
 
 template <typename T>
 void testArrays(const std::vector<T>& result, const std::vector<T>& expected) {
@@ -548,6 +549,17 @@ TEST(MergeKSortedArrays, SampleTest) {
     MergeKSortedArrays mksa;
     auto res = mksa.doSort({{1, 3, 5, 7}, {2, 4, 6, 8}, {0, 9, 10, 11}});
     testArrays(res, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 });
+}
+
+TEST(FourElementsWithGivenSum, SampleArray) {
+    FourElementsWithGivenSum fegs;
+    auto elements = fegs.getElements({10, 2, 3, 4, 5, 9, 7, 8}, 23);
+    ASSERT_TRUE(elements.has_value());
+    auto [first, second, third, fourth] = elements.value();
+    ASSERT_EQ(2, first);
+    ASSERT_EQ(3, second);
+    ASSERT_EQ(8, third);
+    ASSERT_EQ(10, fourth);
 }
 
 int runAllTests() {
