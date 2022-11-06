@@ -44,6 +44,7 @@
 #include <negative_integer_window_size_k.h>
 #include <inorder_successor_binary_tree.h>
 #include <inorder_successor_bst.h>
+#include <merge_k_sorted_arrays.h>
 
 template <typename T>
 void testArrays(const std::vector<T>& result, const std::vector<T>& expected) {
@@ -541,6 +542,12 @@ TEST(InorderSuccessorBST, SampleTree) {
     InorderSuccessorBST isb;
     ASSERT_EQ(10, isb.getInorderSuccessor(bst,8));
     ASSERT_EQ(12, isb.getInorderSuccessor(bst,10));
+}
+
+TEST(MergeKSortedArrays, SampleTest) {
+    MergeKSortedArrays mksa;
+    auto res = mksa.doSort({{1, 3, 5, 7}, {2, 4, 6, 8}, {0, 9, 10, 11}});
+    testArrays(res, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 });
 }
 
 int runAllTests() {
