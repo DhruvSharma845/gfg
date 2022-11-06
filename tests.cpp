@@ -46,6 +46,7 @@
 #include <inorder_successor_bst.h>
 #include <merge_k_sorted_arrays.h>
 #include <four_elements_with_sum_x.h>
+#include <detect_cycle_directed_graph.h>
 
 template <typename T>
 void testArrays(const std::vector<T>& result, const std::vector<T>& expected) {
@@ -560,6 +561,18 @@ TEST(FourElementsWithGivenSum, SampleArray) {
     ASSERT_EQ(3, second);
     ASSERT_EQ(8, third);
     ASSERT_EQ(10, fourth);
+}
+
+TEST(CycleDetectorGraph, SampleGraph) {
+    DirectedUnweightedGraph<int> g(4);
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(1, 2);
+    g.addEdge(2, 0);
+    g.addEdge(2, 3);
+
+    CycleDetectorGraph<int> cdg;
+    ASSERT_TRUE(cdg.hasCycle(g));
 }
 
 int runAllTests() {
