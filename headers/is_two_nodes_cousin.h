@@ -37,7 +37,7 @@ auto CousinsInBinaryTree::isCousin(BinaryTreeNode<int>* root, BinaryTreeNode<int
                     secondFound = true;
                     parSecond = currentNode;
                 }
-                q.push(currentNode->getLeft());
+                q.push(currentNode->getLeft().get());
             }
 
             if(currentNode->getRight() != nullptr) {
@@ -49,7 +49,7 @@ auto CousinsInBinaryTree::isCousin(BinaryTreeNode<int>* root, BinaryTreeNode<int
                     secondFound = true;
                     parSecond = currentNode;
                 }
-                q.push(currentNode->getRight());
+                q.push(currentNode->getRight().get());
             }
             if(firstFound == true && secondFound == true) {
                 break;

@@ -19,17 +19,17 @@ BinaryTreeNode<int>* InorderSuccessorBinaryTree::findNode(BinaryTreeNode<int>* n
         return node;
     }
 
-    BinaryTreeNode<int>* leftRes = findNode(node->getLeft(), key);
+    BinaryTreeNode<int>* leftRes = findNode(node->getLeft().get(), key);
     if(leftRes != nullptr) {
         return leftRes;
     }
 
-    return findNode(node->getRight(), key);
+    return findNode(node->getRight().get(), key);
 }
 
 BinaryTreeNode<int>* InorderSuccessorBinaryTree::getLeftMostNode(BinaryTreeNode<int>* node) {
     while(node->getLeft() != nullptr) {
-        node = node->getLeft();
+        node = node->getLeft().get();
     }
     return node;
 }
@@ -46,23 +46,23 @@ bool InorderSuccessorBinaryTree::findSuccessorInAncestors(
         return true;
     }
 
-    bool leftRes = findSuccessorInAncestors(node->getLeft(), keyNode, foundNode);
+    bool leftRes = findSuccessorInAncestors(node->getLeft().get(), keyNode, foundNode);
     if(leftRes) {
         if((*foundNode)->getData() == -1) {
             (*foundNode) = node;
         }
         return false;
     }
-    return findSuccessorInAncestors(node->getRight(), keyNode, foundNode);
+    return findSuccessorInAncestors(node->getRight().get(), keyNode, foundNode);
 }
 
 int InorderSuccessorBinaryTree::getInorderSuccessor(BinaryTree<int>& bt, int key) {
-    BinaryTreeNode<int>* node = findNode(bt.getRoot(), key);
+    BinaryTreeNode<int>* node = findNode(bt.getRoot().get(), key);
 
     if(node->getRight() != nullptr) {
-        return getLeftMostNode(node->getRight())->getData();
+        return getLeftMostNode(node->getRight().get())->getData();
     }
     BinaryTreeNode<int>* foundNode = new BinaryTreeNode<int>(-1, nullptr, nullptr);
-    findSuccessorInAncestors(bt.getRoot(), node, &foundNode);
+    findSuccessorInAncestors(bt.getRoot().get(), node, &foundNode);
     return (foundNode != nullptr) ? foundNode->getData() : -1;
 }

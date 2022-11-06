@@ -23,8 +23,8 @@ auto SumOfRightLeavesInBinaryTree::getSumOfRightLeavesUtil(BinaryTreeNode<int>* 
         }
     }
     return (
-        getSumOfRightLeavesUtil(node->getLeft() , Direction::Left) +
-        getSumOfRightLeavesUtil(node->getRight(), Direction::Right)
+        getSumOfRightLeavesUtil(node->getLeft().get(), Direction::Left) +
+        getSumOfRightLeavesUtil(node->getRight().get(), Direction::Right)
     );
 
 }
@@ -34,7 +34,7 @@ auto SumOfRightLeavesInBinaryTree::getSumOfRightLeaves(const BinaryTree<int>& bt
         return 0;
     }
     return (
-        getSumOfRightLeavesUtil(bt.getRoot()->getLeft(), Direction::Left) +
-        getSumOfRightLeavesUtil(bt.getRoot()->getRight(), Direction::Right)
+        getSumOfRightLeavesUtil(bt.getRoot()->getLeft().get(), Direction::Left) +
+        getSumOfRightLeavesUtil(bt.getRoot()->getRight().get(), Direction::Right)
     );
 }

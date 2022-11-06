@@ -19,10 +19,10 @@ BinaryTreeNode<int>* LowestCommonAncestorBST::getLCAUtil(BinaryTreeNode<int>* ro
         return nullptr;
     }
     if(root->getData() > firstValue && root->getData() > secondValue) {
-        return getLCAUtil(root->getLeft(), firstValue, secondValue);
+        return getLCAUtil(root->getLeft().get(), firstValue, secondValue);
     }
     else if(root->getData() < firstValue && root->getData() < secondValue) {
-        return getLCAUtil(root->getRight(), firstValue, secondValue);
+        return getLCAUtil(root->getRight().get(), firstValue, secondValue);
     }
     return root;
 }

@@ -43,6 +43,7 @@
 #include <next_greater_element.h>
 #include <negative_integer_window_size_k.h>
 #include <inorder_successor_binary_tree.h>
+#include <inorder_successor_bst.h>
 
 template <typename T>
 void testArrays(const std::vector<T>& result, const std::vector<T>& expected) {
@@ -132,7 +133,7 @@ TEST(CousinsInBinaryTree, CheckBothPositiveAndNegativeCases) {
     BinaryTree<int> bt;
     using Dir = BinaryTreeNode<int>::Direction;
     bt.addRoot(6);
-    auto* root = bt.getRoot();
+    auto* root = bt.getRoot().get();
     root->addChild(3, Dir::Left);
     root->addChild(5, Dir::Right);
 
@@ -144,8 +145,8 @@ TEST(CousinsInBinaryTree, CheckBothPositiveAndNegativeCases) {
 
     CousinsInBinaryTree cbt;
 
-    EXPECT_EQ(true, cbt.isCousin(bt.getRoot(), root->getLeft()->getLeft(), root->getRight()->getLeft()));
-    EXPECT_EQ(false, cbt.isCousin(bt.getRoot(), root->getLeft()->getLeft(), root->getRight()));
+    EXPECT_EQ(true, cbt.isCousin(bt.getRoot().get(), root->getLeft()->getLeft().get(), root->getRight()->getLeft().get()));
+    EXPECT_EQ(false, cbt.isCousin(bt.getRoot().get(), root->getLeft()->getLeft().get(), root->getRight().get()));
 }
 
 TEST(KLargestElementsArray, SampleArray) {
@@ -172,8 +173,8 @@ TEST(LowestCommonAncestorBST, SampleTree) {
     bst.insert(14);
 
     LowestCommonAncestorBST lca;
-    EXPECT_EQ(12, lca.getLCA(bst.getRoot(), 10, 14));
-    EXPECT_EQ(8, lca.getLCA(bst.getRoot(), 8, 14));
+    EXPECT_EQ(12, lca.getLCA(bst.getRoot().get(), 10, 14));
+    EXPECT_EQ(8, lca.getLCA(bst.getRoot().get(), 8, 14));
 }
 
 TEST(SmallestWindowWithAllCharsOfPattern, SampleStringAndPattern) {
@@ -327,7 +328,7 @@ TEST(SumMinMaxOfSubarraysOfSizeK, SampleArray) {
 TEST(SumOfRightLeavesInBinaryTree, SampleTree) {
     BinaryTree<int> bt;
     bt.addRoot(1);
-    BinaryTreeNode<int>* root = bt.getRoot();
+    BinaryTreeNode<int>* root = bt.getRoot().get();
     root->addChild(2, BinaryTreeNode<int>::Direction::Left);
     root->addChild(3, BinaryTreeNode<int>::Direction::Right);
 
@@ -345,7 +346,7 @@ TEST(SumOfRightLeavesInBinaryTree, SampleTree) {
 TEST(IsBinaryTreeBST, SampleTreePositive) {
     BinaryTree<int> bt;
     bt.addRoot(4);
-    BinaryTreeNode<int>* root = bt.getRoot();
+    BinaryTreeNode<int>* root = bt.getRoot().get();
     root->addChild(2, BinaryTreeNode<int>::Direction::Left);
     root->addChild(5, BinaryTreeNode<int>::Direction::Right);
 
@@ -359,7 +360,7 @@ TEST(IsBinaryTreeBST, SampleTreePositive) {
 TEST(IsBinaryTreeBST, SampleTreeNegative) {
     BinaryTree<int> bt;
     bt.addRoot(4);
-    BinaryTreeNode<int>* root = bt.getRoot();
+    BinaryTreeNode<int>* root = bt.getRoot().get();
     root->addChild(2, BinaryTreeNode<int>::Direction::Left);
     root->addChild(0, BinaryTreeNode<int>::Direction::Right);
 
@@ -512,7 +513,7 @@ TEST(InorderSuccessorBinaryTree, SampleTree) {
     BinaryTree<int> bt;
     using Dir = BinaryTreeNode<int>::Direction;
     bt.addRoot(1);
-    auto* root = bt.getRoot();
+    auto* root = bt.getRoot().get();
     root->addChild(2, Dir::Left);
     root->addChild(3, Dir::Right);
 
@@ -525,6 +526,21 @@ TEST(InorderSuccessorBinaryTree, SampleTree) {
     
     ASSERT_EQ(2, isbt.getInorderSuccessor(bt, 4));
     ASSERT_EQ(1, isbt.getInorderSuccessor(bt, 5));
+}
+
+TEST(InorderSuccessorBST, SampleTree) {
+    BinarySearchTree<int> bst;
+    bst.insert(20);
+    bst.insert(8);
+    bst.insert(22);
+    bst.insert(4);
+    bst.insert(12);
+    bst.insert(10);
+    bst.insert(14);
+
+    InorderSuccessorBST isb;
+    ASSERT_EQ(10, isb.getInorderSuccessor(bst,8));
+    ASSERT_EQ(12, isb.getInorderSuccessor(bst,10));
 }
 
 int runAllTests() {

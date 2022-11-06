@@ -1,22 +1,24 @@
 #pragma once
 
+#include <memory>
+
 #include <binary_tree.h>
 
 template <typename T>
 class BinarySearchTree {
 public:
     void insert(T _data);
-    BinaryTreeNode<T>* getRoot() { return root; }
+    std::shared_ptr<BinaryTreeNode<T>> getRoot() { return root; }
 private:
-    BinaryTreeNode<T>* insert(BinaryTreeNode<T>* node, T _data);
+    std::shared_ptr<BinaryTreeNode<T>> insert(std::shared_ptr<BinaryTreeNode<T>> node, T _data);
 private:
-    BinaryTreeNode<T>* root{nullptr};
+    std::shared_ptr<BinaryTreeNode<T>> root{nullptr};
 };
 
 template <typename T>
-BinaryTreeNode<T>* BinarySearchTree<T>::insert(BinaryTreeNode<T>* node, T _data) {
+std::shared_ptr<BinaryTreeNode<T>> BinarySearchTree<T>::insert(std::shared_ptr<BinaryTreeNode<T>> node, T _data) {
     if(node == nullptr) {
-        return new BinaryTreeNode<T>(_data, nullptr, nullptr);
+        return std::make_shared<BinaryTreeNode<T>>(_data, nullptr, nullptr);
     }
 
     if(node->getData() > _data) {

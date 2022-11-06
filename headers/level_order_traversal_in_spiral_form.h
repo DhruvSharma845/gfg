@@ -16,12 +16,12 @@ private:
 
 LevelOrderTraversalInSpiralForm::LevelOrderTraversalInSpiralForm(): binaryTree{BinaryTree<int>{}} {
     binaryTree.addRoot(1);
-    auto* rootNode = binaryTree.getRoot();
+    BinaryTreeNode<int>* rootNode = binaryTree.getRoot().get();
     rootNode->addChild(2, BinaryTreeNode<int>::Direction::Left);
     rootNode->addChild(3, BinaryTreeNode<int>::Direction::Right);
 
-    auto* rootLeftChild = rootNode->getLeft();
-    auto* rootRightChild = rootNode->getRight();
+    auto* rootLeftChild = rootNode->getLeft().get();
+    auto* rootRightChild = rootNode->getRight().get();
 
     rootLeftChild->addChild(7, BinaryTreeNode<int>::Direction::Left);
     rootLeftChild->addChild(6, BinaryTreeNode<int>::Direction::Right);
@@ -31,7 +31,7 @@ LevelOrderTraversalInSpiralForm::LevelOrderTraversalInSpiralForm(): binaryTree{B
 }
 
 std::vector<int> LevelOrderTraversalInSpiralForm::getLOTInSpiralForm() {
-    auto* rootNode = binaryTree.getRoot();
+    auto* rootNode = binaryTree.getRoot().get();
 
     std::vector<int> resultVec;
 
@@ -47,10 +47,10 @@ std::vector<int> LevelOrderTraversalInSpiralForm::getLOTInSpiralForm() {
                 stLeftRight.pop();
                 resultVec.push_back(num->getData());
                 if(num->getRight() != nullptr) {
-                    stRightLeft.push(num->getRight());
+                    stRightLeft.push(num->getRight().get());
                 }
                 if(num->getLeft() != nullptr) {
-                    stRightLeft.push(num->getLeft());
+                    stRightLeft.push(num->getLeft().get());
                 }
             }
             dir = Direction::LeftToRight;
@@ -62,10 +62,10 @@ std::vector<int> LevelOrderTraversalInSpiralForm::getLOTInSpiralForm() {
                 resultVec.push_back(num->getData());
 
                 if(num->getLeft() != nullptr) {
-                    stLeftRight.push(num->getLeft());
+                    stLeftRight.push(num->getLeft().get());
                 }
                 if(num->getRight() != nullptr) {
-                    stLeftRight.push(num->getRight());
+                    stLeftRight.push(num->getRight().get());
                 }
             }
             dir = Direction::RightToLeft;

@@ -17,11 +17,11 @@ auto IsBinaryTreeBST::recursiveUtil(BinaryTreeNode<int>* node, int minLimit, int
         return false;
     }
     return (
-        recursiveUtil(node->getLeft(), minLimit, node->getData() - 1) &&
-        recursiveUtil(node->getRight(), node->getData() + 1, maxLimit)
+        recursiveUtil(node->getLeft().get(), minLimit, node->getData() - 1) &&
+        recursiveUtil(node->getRight().get(), node->getData() + 1, maxLimit)
     );
 }
 
 auto IsBinaryTreeBST::doCheck(const BinaryTree<int>& bt) -> bool {
-    return recursiveUtil(bt.getRoot(), std::numeric_limits<int>::min(), std::numeric_limits<int>::max());
+    return recursiveUtil(bt.getRoot().get(), std::numeric_limits<int>::min(), std::numeric_limits<int>::max());
 }
