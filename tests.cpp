@@ -47,6 +47,7 @@
 #include <merge_k_sorted_arrays.h>
 #include <four_elements_with_sum_x.h>
 #include <detect_cycle_directed_graph.h>
+#include <ceiling_sorted_array.h>
 
 template <typename T>
 void testArrays(const std::vector<T>& result, const std::vector<T>& expected) {
@@ -573,6 +574,13 @@ TEST(CycleDetectorGraph, SampleGraph) {
 
     CycleDetectorGraph<int> cdg;
     ASSERT_TRUE(cdg.hasCycle(g));
+}
+
+TEST(CeilingInSortedArray, SampleArrays) {
+    CeilingInSortedArray cisa;
+    ASSERT_EQ(1, cisa.getCeil({1, 2, 8, 10, 10, 12, 19}, 1));
+    ASSERT_EQ(8, cisa.getCeil({1, 2, 8, 10, 10, 12, 19}, 5));
+    ASSERT_EQ(std::nullopt, cisa.getCeil({1, 2, 8, 10, 10, 12, 19}, 20));
 }
 
 int runAllTests() {
