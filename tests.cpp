@@ -49,6 +49,7 @@
 #include <detect_cycle_directed_graph.h>
 #include <ceiling_sorted_array.h>
 #include <segregate_zeroes_ones_array.h>
+#include <minimum_number_of_platforms.h>
 
 template <typename T>
 void testArrays(const std::vector<T>& result, const std::vector<T>& expected) {
@@ -589,6 +590,11 @@ TEST(SegregateZeroesAndOnes, SampleArray) {
     SegregateZeroesAndOnes szo;
     szo.doSegregate(arr);
     testArrays(arr, {0, 0, 0, 0, 0, 1, 1, 1, 1, 1});
+}
+
+TEST(MinimumNumberOfPlatforms, SampleArray) {
+    MinimumNumberOfPlatforms mnp;
+    ASSERT_EQ(3, mnp.getNumber({{900, 910}, {940, 1200}, {950, 1120}, {1100, 1130}, {1500, 1900}, {1800,2000}}));
 }
 
 int runAllTests() {
