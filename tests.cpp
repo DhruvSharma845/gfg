@@ -50,6 +50,7 @@
 #include <ceiling_sorted_array.h>
 #include <segregate_zeroes_ones_array.h>
 #include <minimum_number_of_platforms.h>
+#include <maximum_size_submatrix_with_all_1s.h>
 
 template <typename T>
 void testArrays(const std::vector<T>& result, const std::vector<T>& expected) {
@@ -595,6 +596,24 @@ TEST(SegregateZeroesAndOnes, SampleArray) {
 TEST(MinimumNumberOfPlatforms, SampleArray) {
     MinimumNumberOfPlatforms mnp;
     ASSERT_EQ(3, mnp.getNumber({{900, 910}, {940, 1200}, {950, 1120}, {1100, 1130}, {1500, 1900}, {1800,2000}}));
+}
+
+TEST(MaxSubmatrixWithAllOnes, SampleMatrix) {
+    MaxSubmatrixWithAllOnes::Matrix mat{
+        { 0, 1, 1, 0, 1 }, 
+        { 1, 1, 0, 1, 0 },
+        { 0, 1, 1, 1, 0 }, 
+        { 1, 1, 1, 1, 0 },
+        { 1, 1, 1, 1, 1 }, 
+        { 0, 0, 0, 0, 0 }
+    };
+    MaxSubmatrixWithAllOnes mswao;
+    auto result = mswao.getMaximumSubmatrix(mat);
+    auto [x, y, width, height] = result;
+    EXPECT_EQ(2, x);
+    EXPECT_EQ(1, y);
+    EXPECT_EQ(3, width);
+    EXPECT_EQ(3, height);
 }
 
 int runAllTests() {
