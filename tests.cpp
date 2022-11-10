@@ -51,6 +51,9 @@
 #include <segregate_zeroes_ones_array.h>
 #include <minimum_number_of_platforms.h>
 #include <maximum_size_submatrix_with_all_1s.h>
+#include <search_word_2d_grid.h>
+
+using namespace std::literals;
 
 template <typename T>
 void testArrays(const std::vector<T>& result, const std::vector<T>& expected) {
@@ -614,6 +617,21 @@ TEST(MaxSubmatrixWithAllOnes, SampleMatrix) {
     EXPECT_EQ(1, y);
     EXPECT_EQ(3, width);
     EXPECT_EQ(3, height);
+}
+
+TEST(SearchWordIn2DGrid, SampleGrid) {
+    std::vector<std::string> grid1{
+        "GEEKSFORGEEKS"s,
+        "GEEKSQUIZGEEK"s,
+        "IDEQAPRACTICE"s
+    };
+    
+    std::vector<std::pair<int,int>> expected1{
+        {0, 0}, {0,8}, {1,0}
+    };
+    SearchWordIn2DGrid sw;
+    auto result1 = sw.getCoordinates(grid1, "GEEKS");
+    testArrays(result1, expected1);
 }
 
 int runAllTests() {
