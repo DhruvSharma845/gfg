@@ -53,6 +53,7 @@
 #include <maximum_size_submatrix_with_all_1s.h>
 #include <search_word_2d_grid.h>
 #include <fixed_point_sorted_array.h>
+#include <n_queens.h>
 
 using namespace std::literals;
 
@@ -643,6 +644,18 @@ TEST(FixedPointSortedArray, SampleArrays) {
 
     auto res2 = fp.getIndex({-10, -5, 3, 4, 7, 9});
     ASSERT_FALSE(res2.has_value());
+}
+
+TEST(NQueens, SampleN) {
+    NQueens nq;
+    auto res = nq.findPositions(4);
+    NQueens::Chessboard expected{
+        { 0,  1,  0,  0},
+        { 0,  0,  0,  1},
+        { 1,  0,  0,  0},
+        { 0,  0,  1,  0} 
+    };
+    testArrays(res, expected);
 }
 
 int runAllTests() {
