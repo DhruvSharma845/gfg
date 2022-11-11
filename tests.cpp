@@ -52,6 +52,7 @@
 #include <minimum_number_of_platforms.h>
 #include <maximum_size_submatrix_with_all_1s.h>
 #include <search_word_2d_grid.h>
+#include <fixed_point_sorted_array.h>
 
 using namespace std::literals;
 
@@ -632,6 +633,16 @@ TEST(SearchWordIn2DGrid, SampleGrid) {
     SearchWordIn2DGrid sw;
     auto result1 = sw.getCoordinates(grid1, "GEEKS");
     testArrays(result1, expected1);
+}
+
+TEST(FixedPointSortedArray, SampleArrays) {
+    FixedPointSortedArray fp;
+    auto res1 = fp.getIndex({-10, -5, 0, 3, 7});
+    ASSERT_TRUE(res1.has_value());
+    EXPECT_EQ(res1.value(), 3);
+
+    auto res2 = fp.getIndex({-10, -5, 3, 4, 7, 9});
+    ASSERT_FALSE(res2.has_value());
 }
 
 int runAllTests() {
