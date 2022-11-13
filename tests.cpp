@@ -56,6 +56,7 @@
 #include <n_queens.h>
 #include <merge_array_into_another_array.h>
 #include <array_rotation.h>
+#include <intersection_point_linked_list.h>
 
 using namespace std::literals;
 
@@ -679,6 +680,26 @@ TEST(ArrayRotater, SampleArray) {
     std::vector<int> arr{1, 2, 3, 4, 5, 6, 7};
     ar.rotate(arr, 2);
     testArrays(arr, {3, 4, 5, 6, 7, 1, 2});
+}
+
+TEST(IntersectionPointLinkedList, SampleLLs) {
+    SinglyLinkedList<int> sll1;
+    sll1.addHead(1);
+    auto* head = sll1.getHead();
+    head->setNext(new SLLNode<int>(2, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(3, nullptr));
+    head->getNext()->getNext()->setNext(new SLLNode<int>(4, nullptr));
+    head->getNext()->getNext()->getNext()->setNext(new SLLNode<int>(5, nullptr));
+
+    SinglyLinkedList<int> sll2;
+    sll2.addHead(6);
+    auto* head2 = sll2.getHead();
+    head2->setNext(head->getNext()->getNext()->getNext());
+
+    IntersectionPointLinkedList<int> ipll;
+    SLLNode<int>* intersectionPoint = ipll.findIntersectionPoint(sll1, sll2);
+    ASSERT_TRUE(intersectionPoint != nullptr);
+    ASSERT_EQ(intersectionPoint->getData(), 4);
 }
 
 int runAllTests() {
