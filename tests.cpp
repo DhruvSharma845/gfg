@@ -54,6 +54,7 @@
 #include <search_word_2d_grid.h>
 #include <fixed_point_sorted_array.h>
 #include <n_queens.h>
+#include <merge_array_into_another_array.h>
 
 using namespace std::literals;
 
@@ -656,6 +657,20 @@ TEST(NQueens, SampleN) {
         { 0,  0,  1,  0} 
     };
     testArrays(res, expected);
+}
+
+TEST(MergeArrayIntoAnotherArray, SampleArray) {
+    
+    std::vector<int> bigArray{2, 8, 
+        MergeArrayIntoAnotherArray::NA, 
+        MergeArrayIntoAnotherArray::NA, 
+        MergeArrayIntoAnotherArray::NA, 13, 
+        MergeArrayIntoAnotherArray::NA, 15, 20};
+
+    MergeArrayIntoAnotherArray ma;
+    ma.doMerge(bigArray, {5, 7, 9, 25});
+
+    testArrays(bigArray, {2, 5, 7, 8, 9, 13, 15, 20, 25});
 }
 
 int runAllTests() {
