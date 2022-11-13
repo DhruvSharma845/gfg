@@ -55,6 +55,7 @@
 #include <fixed_point_sorted_array.h>
 #include <n_queens.h>
 #include <merge_array_into_another_array.h>
+#include <array_rotation.h>
 
 using namespace std::literals;
 
@@ -671,6 +672,13 @@ TEST(MergeArrayIntoAnotherArray, SampleArray) {
     ma.doMerge(bigArray, {5, 7, 9, 25});
 
     testArrays(bigArray, {2, 5, 7, 8, 9, 13, 15, 20, 25});
+}
+
+TEST(ArrayRotater, SampleArray) {
+    ArrayRotater ar;
+    std::vector<int> arr{1, 2, 3, 4, 5, 6, 7};
+    ar.rotate(arr, 2);
+    testArrays(arr, {3, 4, 5, 6, 7, 1, 2});
 }
 
 int runAllTests() {
