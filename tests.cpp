@@ -58,6 +58,7 @@
 #include <array_rotation.h>
 #include <intersection_point_linked_list.h>
 #include <augment_stack_with_min.h>
+#include <minimum_sum_of_squares_of_character_counts.h>
 
 using namespace std::literals;
 
@@ -714,6 +715,12 @@ TEST(StackWithSpecialOperationMin, SampleSequenceOfOperations) {
     ASSERT_EQ(5, s.top());
     s.pop();
     ASSERT_EQ(30, s.top());
+}
+
+TEST(MinimumSumOfSquaresOfCharacterCounts, SampleString) {
+    MinimumSumOfSquaresOfCharacterCounts ms;
+    ASSERT_EQ(ms.getMinValue("abccc", 1), 6);
+    ASSERT_EQ(ms.getMinValue("aaab", 2), 2);
 }
 
 int runAllTests() {
