@@ -57,6 +57,7 @@
 #include <merge_array_into_another_array.h>
 #include <array_rotation.h>
 #include <intersection_point_linked_list.h>
+#include <augment_stack_with_min.h>
 
 using namespace std::literals;
 
@@ -700,6 +701,19 @@ TEST(IntersectionPointLinkedList, SampleLLs) {
     SLLNode<int>* intersectionPoint = ipll.findIntersectionPoint(sll1, sll2);
     ASSERT_TRUE(intersectionPoint != nullptr);
     ASSERT_EQ(intersectionPoint->getData(), 4);
+}
+
+TEST(StackWithSpecialOperationMin, SampleSequenceOfOperations) {
+    StackWithSpecialOperationMin<int> s;
+    s.push(10);
+    s.push(20);
+    s.push(30);
+    ASSERT_EQ(10, s.getMin());
+    s.push(5);
+    ASSERT_EQ(5, s.getMin());
+    ASSERT_EQ(5, s.top());
+    s.pop();
+    ASSERT_EQ(30, s.top());
 }
 
 int runAllTests() {
