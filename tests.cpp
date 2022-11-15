@@ -59,6 +59,7 @@
 #include <intersection_point_linked_list.h>
 #include <augment_stack_with_min.h>
 #include <minimum_sum_of_squares_of_character_counts.h>
+#include <kth_ancestor_binary_tree.h>
 
 using namespace std::literals;
 
@@ -721,6 +722,28 @@ TEST(MinimumSumOfSquaresOfCharacterCounts, SampleString) {
     MinimumSumOfSquaresOfCharacterCounts ms;
     ASSERT_EQ(ms.getMinValue("abccc", 1), 6);
     ASSERT_EQ(ms.getMinValue("aaab", 2), 2);
+}
+
+TEST(KthAncestorBinaryTree, SampleTree) {
+    BinaryTree<int> bt;
+    using Dir = BinaryTreeNode<int>::Direction;
+    bt.addRoot(1);
+    auto* root = bt.getRoot().get();
+    root->addChild(2, Dir::Left);
+    root->addChild(3, Dir::Right);
+
+    root->getLeft()->addChild(4, Dir::Left);
+    root->getLeft()->addChild(5, Dir::Right);
+
+    root->getRight()->addChild(6, Dir::Right);
+
+    KthAncestorBinaryTree ka;
+    auto resNode = ka.findKthAncestor(bt, 4, 2);
+    ASSERT_TRUE(resNode.has_value());
+    EXPECT_EQ(resNode.value()->getData(), 1);
+
+    auto resNode1 = ka.findKthAncestor(bt, 5, 3);
+    ASSERT_FALSE(resNode1.has_value());
 }
 
 int runAllTests() {
