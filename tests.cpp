@@ -60,6 +60,7 @@
 #include <augment_stack_with_min.h>
 #include <minimum_sum_of_squares_of_character_counts.h>
 #include <kth_ancestor_binary_tree.h>
+#include <kth_smallest_bst.h>
 
 using namespace std::literals;
 
@@ -744,6 +745,22 @@ TEST(KthAncestorBinaryTree, SampleTree) {
 
     auto resNode1 = ka.findKthAncestor(bt, 5, 3);
     ASSERT_FALSE(resNode1.has_value());
+}
+
+TEST(KthSmallestBST, SampleBST) {
+    BinarySearchTree<int> bst;
+    bst.insert(20);
+    bst.insert(8);
+    bst.insert(22);
+    bst.insert(4);
+    bst.insert(12);
+    bst.insert(10);
+    bst.insert(14);
+
+    KthSmallestBST<int> ks;
+    auto* node = ks.getKthSmallest(bst, 3);
+    ASSERT_TRUE(node != nullptr);
+    ASSERT_EQ(node->getData(), 10);
 }
 
 int runAllTests() {

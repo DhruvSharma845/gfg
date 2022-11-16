@@ -8,7 +8,7 @@ template <typename T>
 class BinarySearchTree {
 public:
     void insert(T _data);
-    std::shared_ptr<BinaryTreeNode<T>> getRoot() { return root; }
+    std::shared_ptr<BinaryTreeNode<T>> getRoot() const { return root; }
 private:
     std::shared_ptr<BinaryTreeNode<T>> insert(std::shared_ptr<BinaryTreeNode<T>> node, T _data);
 private:
