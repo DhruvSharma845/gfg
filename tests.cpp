@@ -61,6 +61,7 @@
 #include <minimum_sum_of_squares_of_character_counts.h>
 #include <kth_ancestor_binary_tree.h>
 #include <kth_smallest_bst.h>
+#include <kth_smallest_sorted_2d_array.h>
 
 using namespace std::literals;
 
@@ -761,6 +762,17 @@ TEST(KthSmallestBST, SampleBST) {
     auto* node = ks.getKthSmallest(bst, 3);
     ASSERT_TRUE(node != nullptr);
     ASSERT_EQ(node->getData(), 10);
+}
+
+TEST(KthSmallestInSorted2DArray, SampleMatrix) {
+    KthSmallestInSorted2DArray ks;
+    std::vector<std::vector<int>> v{
+        { 10, 20, 30, 40 },
+        { 15, 25, 35, 45 },
+        { 25, 29, 37, 48 },
+        { 32, 33, 39, 50 }
+    };
+    ASSERT_EQ(30, ks.getKthSmallest(v, 7));
 }
 
 int runAllTests() {
