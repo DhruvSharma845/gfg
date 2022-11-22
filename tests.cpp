@@ -62,6 +62,7 @@
 #include <kth_ancestor_binary_tree.h>
 #include <kth_smallest_bst.h>
 #include <kth_smallest_sorted_2d_array.h>
+#include <bring_anagrams_together.h>
 
 using namespace std::literals;
 
@@ -773,6 +774,15 @@ TEST(KthSmallestInSorted2DArray, SampleMatrix) {
         { 32, 33, 39, 50 }
     };
     ASSERT_EQ(30, ks.getKthSmallest(v, 7));
+}
+
+TEST(AnagramsCollector, SampleArray) {
+    AnagramsCollector ac;
+    auto res = ac.getAllAnagrams({"cat", "dog", "tac", "god", "act"});
+    std::vector<std::vector<std::string>> expectedResult{{"dog", "god"}, {"cat", "tac", "act"}};
+    for(int i = 0; i < expectedResult.size(); ++i) {
+        testArrays(res[i], expectedResult[i]);
+    }
 }
 
 int runAllTests() {
