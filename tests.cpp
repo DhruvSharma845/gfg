@@ -63,6 +63,7 @@
 #include <kth_smallest_bst.h>
 #include <kth_smallest_sorted_2d_array.h>
 #include <bring_anagrams_together.h>
+#include <graph_bipartite.h>
 
 using namespace std::literals;
 
@@ -776,6 +777,17 @@ TEST(KthSmallestInSorted2DArray, SampleMatrix) {
     ASSERT_EQ(30, ks.getKthSmallest(v, 7));
 }
 
+TEST(IsGraphBipartite, SampleGraph) {
+    UndirectedUnweightedGraph<int> g(4);
+    g.addEdge(0, 1);
+    g.addEdge(0, 3);
+    g.addEdge(1, 2);
+    g.addEdge(2, 3);
+
+    IsGraphBipartite igb;
+    ASSERT_TRUE(igb.isBipartite(g));
+}
+
 TEST(AnagramsCollector, SampleArray) {
     AnagramsCollector ac;
     auto res = ac.getAllAnagrams({"cat", "dog", "tac", "god", "act"});
@@ -784,6 +796,7 @@ TEST(AnagramsCollector, SampleArray) {
         testArrays(res[i], expectedResult[i]);
     }
 }
+
 
 int runAllTests() {
     ::testing::InitGoogleTest();
