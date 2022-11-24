@@ -64,6 +64,7 @@
 #include <kth_smallest_sorted_2d_array.h>
 #include <bring_anagrams_together.h>
 #include <graph_bipartite.h>
+#include <search_in_sorted_matrix.h>
 
 using namespace std::literals;
 
@@ -795,6 +796,23 @@ TEST(AnagramsCollector, SampleArray) {
     for(int i = 0; i < expectedResult.size(); ++i) {
         testArrays(res[i], expectedResult[i]);
     }
+}
+
+TEST(SearchInSortedMatrix, SampleMatrix) {
+    SearchInSortedMatrix::Matrix matrix{ 
+        { 10, 20, 30, 40 },
+        { 15, 25, 35, 45 },
+        { 27, 29, 37, 48 },
+        { 32, 33, 39, 50 } };
+    SearchInSortedMatrix ssm;
+    auto res = ssm.findElement(matrix, 29);
+    ASSERT_TRUE(res.has_value());
+    auto [x, y] = res.value();
+    ASSERT_EQ(x, 2);
+    ASSERT_EQ(y, 1);
+
+    auto res1 = ssm.findElement(matrix, 100);
+    ASSERT_FALSE(res1.has_value());    
 }
 
 
