@@ -65,6 +65,7 @@
 #include <bring_anagrams_together.h>
 #include <graph_bipartite.h>
 #include <search_in_sorted_matrix.h>
+#include <sort_arrays_0_1_2.h>
 
 using namespace std::literals;
 
@@ -815,6 +816,14 @@ TEST(SearchInSortedMatrix, SampleMatrix) {
     ASSERT_FALSE(res1.has_value());    
 }
 
+TEST(ArraySorter012, SampleArray) {
+    std::vector<int> arr{0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1};
+    ArraySorter012 as;
+    as.doSort(arr);
+
+    std::vector<int> expectedArr{0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2};
+    testArrays<int>(arr, expectedArr);
+}
 
 int runAllTests() {
     ::testing::InitGoogleTest();
