@@ -67,6 +67,7 @@
 #include <search_in_sorted_matrix.h>
 #include <sort_arrays_0_1_2.h>
 #include <minimum_coins_greedy.h>
+#include <longest_increasing_subsequence.h>
 
 using namespace std::literals;
 
@@ -830,6 +831,12 @@ TEST(MinimumCoins, SampleValues) {
     MinimumCoins mc;
     ASSERT_EQ(2, mc.findMinimumCoins(70, {1, 2, 5, 10, 20, 50, 100, 500, 1000}));
     ASSERT_EQ(3, mc.findMinimumCoins(121, {1, 2, 5, 10, 20, 50, 100, 500, 1000}));
+}
+
+TEST(LongestIncreasingSubsequence, SampleArray) {
+    LongestIncreasingSubsequence lis;
+    auto res = lis.findLIS({10, 22, 9, 33, 21, 50, 41, 60, 80});
+    testArrays(res, {10, 22, 33, 41, 60, 80});
 }
 
 int runAllTests() {
