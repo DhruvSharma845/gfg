@@ -66,6 +66,7 @@
 #include <graph_bipartite.h>
 #include <search_in_sorted_matrix.h>
 #include <sort_arrays_0_1_2.h>
+#include <minimum_coins_greedy.h>
 
 using namespace std::literals;
 
@@ -823,6 +824,12 @@ TEST(ArraySorter012, SampleArray) {
 
     std::vector<int> expectedArr{0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2};
     testArrays<int>(arr, expectedArr);
+}
+
+TEST(MinimumCoins, SampleValues) {
+    MinimumCoins mc;
+    ASSERT_EQ(2, mc.findMinimumCoins(70, {1, 2, 5, 10, 20, 50, 100, 500, 1000}));
+    ASSERT_EQ(3, mc.findMinimumCoins(121, {1, 2, 5, 10, 20, 50, 100, 500, 1000}));
 }
 
 int runAllTests() {
