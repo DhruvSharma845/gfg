@@ -68,6 +68,7 @@
 #include <sort_arrays_0_1_2.h>
 #include <minimum_coins_greedy.h>
 #include <longest_increasing_subsequence.h>
+#include <occurrences_of_word_in_matrix.h>
 
 using namespace std::literals;
 
@@ -837,6 +838,28 @@ TEST(LongestIncreasingSubsequence, SampleArray) {
     LongestIncreasingSubsequence lis;
     auto res = lis.findLIS({10, 22, 9, 33, 21, 50, 41, 60, 80});
     testArrays(res, {10, 22, 33, 41, 60, 80});
+}
+
+TEST(AllOccurrencesOfWordInMatrix, SampleMatrix) {
+    AllOccurrencesOfWordInMatrix aow;
+    AllOccurrencesOfWordInMatrix::Matrix m{ 
+        {'B', 'N', 'E', 'Y', 'S'},
+        {'H', 'E', 'D', 'E', 'S'},
+        {'S', 'G', 'N', 'D', 'E'}
+    };
+    auto res = aow.getAllOccurences(m, "DES");
+    std::vector<AllOccurrencesOfWordInMatrix::WordCoordinates> expectedRes{
+        {{1, 2}, {1, 3}, {1, 4}},
+        {{1, 2}, {1, 3}, {0, 4}},
+        {{1, 2}, {1, 1}, {2, 0}},
+        {{2, 3}, {2, 4}, {1, 4}},
+        {{2, 3}, {1, 3}, {1, 4}},
+        {{2, 3}, {1, 3}, {0, 4}},
+    };
+    ASSERT_EQ(res.size(), expectedRes.size());
+    for(int i = 0; i < res.size(); ++i) {
+        testArrays(res[i], expectedRes[i]);
+    }
 }
 
 int runAllTests() {
