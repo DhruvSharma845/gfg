@@ -69,6 +69,7 @@
 #include <minimum_coins_greedy.h>
 #include <longest_increasing_subsequence.h>
 #include <occurrences_of_word_in_matrix.h>
+#include <subset_sum_backtracking.h>
 
 using namespace std::literals;
 
@@ -858,6 +859,20 @@ TEST(AllOccurrencesOfWordInMatrix, SampleMatrix) {
     };
     ASSERT_EQ(res.size(), expectedRes.size());
     for(int i = 0; i < res.size(); ++i) {
+        testArrays(res[i], expectedRes[i]);
+    }
+}
+
+TEST(SubsetSum, SampleArray) {
+    SubsetSum ss;
+    auto res = ss.generateSubset({15, 22, 14, 26, 32, 9, 16, 8}, 53);
+    std::vector<std::vector<int>> expectedRes{
+        {15, 22, 16},
+        {15, 14, 16, 8},
+        {22, 14, 9, 8}
+    };
+    ASSERT_EQ(res.size(), expectedRes.size());
+    for (int i = 0; i < res.size(); i++) {
         testArrays(res[i], expectedRes[i]);
     }
 }
