@@ -71,6 +71,7 @@
 #include <occurrences_of_word_in_matrix.h>
 #include <subset_sum_backtracking.h>
 #include <max_element_in_increasing_decreasing_array.h>
+#include <max_difference_larger_after_smaller.h>
 
 using namespace std::literals;
 
@@ -884,6 +885,12 @@ TEST(MaxElementInIncreasingDecreasingArray, SampleArrays) {
     ASSERT_EQ(50, me.getMaximumElement({1, 3, 50, 10, 9, 7, 6}));
     ASSERT_EQ(50, me.getMaximumElement({10, 20, 30, 40, 50}));
     ASSERT_EQ(120, me.getMaximumElement({120, 100, 80, 20, 0}));
+}
+
+TEST(MaxDiffSuchThatLargerElementAfterSmaller, SampleArray) {
+    MaxDiffSuchThatLargerElementAfterSmaller md;
+    ASSERT_EQ(8, md.getMaxDiff({2, 3, 10, 6, 4, 8, 1}));
+    ASSERT_EQ(2, md.getMaxDiff({7, 9, 5, 6, 3, 2}));
 }
 
 int runAllTests() {
