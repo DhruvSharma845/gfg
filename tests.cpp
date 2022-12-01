@@ -72,6 +72,7 @@
 #include <subset_sum_backtracking.h>
 #include <max_element_in_increasing_decreasing_array.h>
 #include <max_difference_larger_after_smaller.h>
+#include <remove_duplicates_sorted_linked_list.h>
 
 using namespace std::literals;
 
@@ -891,6 +892,22 @@ TEST(MaxDiffSuchThatLargerElementAfterSmaller, SampleArray) {
     MaxDiffSuchThatLargerElementAfterSmaller md;
     ASSERT_EQ(8, md.getMaxDiff({2, 3, 10, 6, 4, 8, 1}));
     ASSERT_EQ(2, md.getMaxDiff({7, 9, 5, 6, 3, 2}));
+}
+
+TEST(RemoveDuplicatesSortedLL, SampleLL) {
+    SinglyLinkedList<int> sll;
+    sll.addHead(1);
+    auto* head = sll.getHead();
+    head->setNext(new SLLNode<int>(1, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(1, nullptr));
+    head->getNext()->getNext()->setNext(new SLLNode<int>(2, nullptr));
+    head->getNext()->getNext()->getNext()->setNext(new SLLNode<int>(2, nullptr));
+
+    RemoveDuplicatesSortedLL<int> rd;
+    rd.removeDuplicates(sll);
+    ASSERT_EQ(1, sll.getHead()->getData());
+    ASSERT_EQ(2, sll.getHead()->getNext()->getData());
+    ASSERT_EQ(nullptr, sll.getHead()->getNext()->getNext());
 }
 
 int runAllTests() {
