@@ -73,6 +73,7 @@
 #include <max_element_in_increasing_decreasing_array.h>
 #include <max_difference_larger_after_smaller.h>
 #include <remove_duplicates_sorted_linked_list.h>
+#include <celebrity_problem.h>
 
 using namespace std::literals;
 
@@ -908,6 +909,19 @@ TEST(RemoveDuplicatesSortedLL, SampleLL) {
     ASSERT_EQ(1, sll.getHead()->getData());
     ASSERT_EQ(2, sll.getHead()->getNext()->getData());
     ASSERT_EQ(nullptr, sll.getHead()->getNext()->getNext());
+}
+
+TEST(CelebrityProblem, SampleMatrix) {
+    CelebrityProblem cp;
+    CelebrityProblem::AcquaintanceMatrix am{ 
+        {0, 0, 1, 0}, 
+        {0, 0, 1, 0}, 
+        {0, 0, 0, 0}, 
+        {0, 0, 1, 0} 
+    };
+    auto res = cp.findCelebrity(am);
+    ASSERT_TRUE(res.has_value());
+    ASSERT_EQ(2, res.value());
 }
 
 int runAllTests() {
