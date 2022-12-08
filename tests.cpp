@@ -74,6 +74,7 @@
 #include <max_difference_larger_after_smaller.h>
 #include <remove_duplicates_sorted_linked_list.h>
 #include <celebrity_problem.h>
+#include <first_non_repeating_character_in_stream.h>
 
 using namespace std::literals;
 
@@ -922,6 +923,18 @@ TEST(CelebrityProblem, SampleMatrix) {
     auto res = cp.findCelebrity(am);
     ASSERT_TRUE(res.has_value());
     ASSERT_EQ(2, res.value());
+}
+
+TEST(FirstNonRepeatingChar, SampleInput) {
+    FirstNonRepeatingChar fnr;
+    auto res = fnr.getFirstNonRepeatingChar('a');
+    ASSERT_EQ(res.value(), 'a');
+    res = fnr.getFirstNonRepeatingChar('a');
+    ASSERT_FALSE(res.has_value());
+    res = fnr.getFirstNonRepeatingChar('b');
+    ASSERT_EQ(res.value(), 'b');
+    res = fnr.getFirstNonRepeatingChar('c');
+    ASSERT_EQ(res.value(), 'b');
 }
 
 int runAllTests() {
