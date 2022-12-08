@@ -75,6 +75,7 @@
 #include <remove_duplicates_sorted_linked_list.h>
 #include <celebrity_problem.h>
 #include <first_non_repeating_character_in_stream.h>
+#include <vertical_tree_binary_tree.h>
 
 using namespace std::literals;
 
@@ -935,6 +936,26 @@ TEST(FirstNonRepeatingChar, SampleInput) {
     ASSERT_EQ(res.value(), 'b');
     res = fnr.getFirstNonRepeatingChar('c');
     ASSERT_EQ(res.value(), 'b');
+}
+
+TEST(VerticalWidthBinaryTree, SampleTree) {
+    BinaryTree<int> bt;
+    using Dir = BinaryTreeNode<int>::Direction;
+    bt.addRoot(1);
+    auto* root = bt.getRoot().get();
+    root->addChild(2, Dir::Left);
+    root->addChild(3, Dir::Right);
+
+    root->getLeft()->addChild(4, Dir::Left);
+    root->getLeft()->addChild(5, Dir::Right);
+
+    root->getRight()->addChild(6, Dir::Left);
+    root->getRight()->addChild(7, Dir::Right);
+
+    root->getRight()->getRight()->addChild(9, Dir::Right);
+
+    VerticalWidthBinaryTree<int> vw;
+    ASSERT_EQ(6, vw.getVerticalWidth(bt));
 }
 
 int runAllTests() {
