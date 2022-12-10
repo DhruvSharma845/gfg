@@ -75,7 +75,8 @@
 #include <remove_duplicates_sorted_linked_list.h>
 #include <celebrity_problem.h>
 #include <first_non_repeating_character_in_stream.h>
-#include <vertical_tree_binary_tree.h>
+#include <vertical_width_binary_tree.h>
+#include <bst_keys_in_range.h>
 
 using namespace std::literals;
 
@@ -956,6 +957,22 @@ TEST(VerticalWidthBinaryTree, SampleTree) {
 
     VerticalWidthBinaryTree<int> vw;
     ASSERT_EQ(6, vw.getVerticalWidth(bt));
+}
+
+TEST(BSTKeysInRange, SampleBST) {
+    BinarySearchTree<int> bst;
+    bst.insert(20);
+    bst.insert(8);
+    bst.insert(22);
+    bst.insert(4);
+    bst.insert(12);
+    bst.insert(10);
+    bst.insert(14);
+
+    BSTKeysInRange bk;
+    auto res = bk.getKeysInRange(bst, 10, 20);
+    std::vector<int> expectedRes{10, 12, 14, 20};
+    testArrays(res, expectedRes);
 }
 
 int runAllTests() {
