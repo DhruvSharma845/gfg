@@ -78,6 +78,7 @@
 #include <vertical_width_binary_tree.h>
 #include <bst_keys_in_range.h>
 #include <sorted_order_in_sorted_matrix.h>
+#include <pairs_with_difference_k.h>
 
 using namespace std::literals;
 
@@ -987,6 +988,11 @@ TEST(SortedOrderInSortedMatrix, SampleMatrix) {
     auto res = so.getSortedOrder(m);
     std::vector<int> expectedRes{10, 15, 20, 25, 27, 29, 30, 32, 33, 35, 37, 39, 40, 45, 48, 50};
     testArrays(res, expectedRes);
+}
+
+TEST(PairsWithDifferenceK, SampleArray) {
+    PairsWithDifferenceK pk;
+    ASSERT_EQ(5, pk.getCountOfPairs({8, 12, 16, 4, 0, 20}, 4));
 }
 
 int runAllTests() {
