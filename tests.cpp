@@ -77,6 +77,7 @@
 #include <first_non_repeating_character_in_stream.h>
 #include <vertical_width_binary_tree.h>
 #include <bst_keys_in_range.h>
+#include <sorted_order_in_sorted_matrix.h>
 
 using namespace std::literals;
 
@@ -972,6 +973,19 @@ TEST(BSTKeysInRange, SampleBST) {
     BSTKeysInRange bk;
     auto res = bk.getKeysInRange(bst, 10, 20);
     std::vector<int> expectedRes{10, 12, 14, 20};
+    testArrays(res, expectedRes);
+}
+
+TEST(SortedOrderInSortedMatrix, SampleMatrix) {
+    SortedOrderInSortedMatrix::Matrix m{
+        {10, 20, 30, 40},
+        {15, 25, 35, 45},
+        {27, 29, 37, 48},
+        {32, 33, 39, 50}
+    };
+    SortedOrderInSortedMatrix so;
+    auto res = so.getSortedOrder(m);
+    std::vector<int> expectedRes{10, 15, 20, 25, 27, 29, 30, 32, 33, 35, 37, 39, 40, 45, 48, 50};
     testArrays(res, expectedRes);
 }
 
