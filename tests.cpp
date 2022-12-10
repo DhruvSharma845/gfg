@@ -79,6 +79,7 @@
 #include <bst_keys_in_range.h>
 #include <sorted_order_in_sorted_matrix.h>
 #include <pairs_with_difference_k.h>
+#include <topological_sorting.h>
 
 using namespace std::literals;
 
@@ -993,6 +994,20 @@ TEST(SortedOrderInSortedMatrix, SampleMatrix) {
 TEST(PairsWithDifferenceK, SampleArray) {
     PairsWithDifferenceK pk;
     ASSERT_EQ(5, pk.getCountOfPairs({8, 12, 16, 4, 0, 20}, 4));
+}
+
+TEST(TopologicalSort, SampleDirectedGraph) {
+    DirectedUnweightedGraph<int> g(6);
+    g.addEdge(2, 3);
+    g.addEdge(3, 1);
+    g.addEdge(4, 0);
+    g.addEdge(4, 1);
+    g.addEdge(5, 0);
+    g.addEdge(5, 2);
+    TopologicalSort<int> ts;
+    auto result = ts.doSort(g);
+    std::vector<int> expectedRes{5, 4, 2, 3, 1, 0};
+    testArrays(result, expectedRes);
 }
 
 int runAllTests() {
