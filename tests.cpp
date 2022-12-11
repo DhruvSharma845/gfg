@@ -81,6 +81,7 @@
 #include <pairs_with_difference_k.h>
 #include <topological_sorting.h>
 #include <array_subset_another_array.h>
+#include <missing_and_repeating_number.h>
 
 using namespace std::literals;
 
@@ -1015,6 +1016,13 @@ TEST(IsArraySubsetOfAnotherArray, SampleArrays) {
     IsArraySubsetOfAnotherArray is;
     ASSERT_TRUE(is.isSubset({11, 3, 7, 1}, {11, 1, 13, 21, 3, 7}));
     ASSERT_FALSE(is.isSubset({19, 5, 3}, {10, 5, 2, 23, 19}));
+}
+
+TEST(MissingAndRepeatingNumber, SampleArrays) {
+    MissingAndRepeatingNumber mrn;
+    auto [first, second] = mrn.getNumberPair({4, 3, 6, 2, 1, 1});
+    ASSERT_EQ(5, first); // missing
+    ASSERT_EQ(1, second); //repeating
 }
 
 int runAllTests() {
