@@ -80,6 +80,7 @@
 #include <sorted_order_in_sorted_matrix.h>
 #include <pairs_with_difference_k.h>
 #include <topological_sorting.h>
+#include <array_subset_another_array.h>
 
 using namespace std::literals;
 
@@ -1008,6 +1009,12 @@ TEST(TopologicalSort, SampleDirectedGraph) {
     auto result = ts.doSort(g);
     std::vector<int> expectedRes{5, 4, 2, 3, 1, 0};
     testArrays(result, expectedRes);
+}
+
+TEST(IsArraySubsetOfAnotherArray, SampleArrays) {
+    IsArraySubsetOfAnotherArray is;
+    ASSERT_TRUE(is.isSubset({11, 3, 7, 1}, {11, 1, 13, 21, 3, 7}));
+    ASSERT_FALSE(is.isSubset({19, 5, 3}, {10, 5, 2, 23, 19}));
 }
 
 int runAllTests() {
