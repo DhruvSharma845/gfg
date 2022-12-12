@@ -82,6 +82,7 @@
 #include <topological_sorting.h>
 #include <array_subset_another_array.h>
 #include <missing_and_repeating_number.h>
+#include <min_unsorted_subarray_sorts_array.h>
 
 using namespace std::literals;
 
@@ -1023,6 +1024,13 @@ TEST(MissingAndRepeatingNumber, SampleArrays) {
     auto [first, second] = mrn.getNumberPair({4, 3, 6, 2, 1, 1});
     ASSERT_EQ(5, first); // missing
     ASSERT_EQ(1, second); //repeating
+}
+
+TEST(MinUnsortedSubarrayThatSortArray, SampleArray) {
+    MinUnsortedSubarrayThatSortArray mu;
+    auto res = mu.getIndices({10, 12, 20, 30, 25, 40, 32, 31, 35, 50, 60});
+    ASSERT_EQ(3, res.first);
+    ASSERT_EQ(8, res.second);
 }
 
 int runAllTests() {
