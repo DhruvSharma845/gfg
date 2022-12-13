@@ -83,6 +83,7 @@
 #include <array_subset_another_array.h>
 #include <missing_and_repeating_number.h>
 #include <min_unsorted_subarray_sorts_array.h>
+#include <minimum_time_to_finish_jobs.h>
 
 using namespace std::literals;
 
@@ -1031,6 +1032,12 @@ TEST(MinUnsortedSubarrayThatSortArray, SampleArray) {
     auto res = mu.getIndices({10, 12, 20, 30, 25, 40, 32, 31, 35, 50, 60});
     ASSERT_EQ(3, res.first);
     ASSERT_EQ(8, res.second);
+}
+
+TEST(MinimumTimeToFinishAllJobs, SampleArrays) {
+    MinimumTimeToFinishAllJobs mt;
+    ASSERT_EQ(50, mt.getMinTIme(2, 5, {4, 5, 10}));
+    ASSERT_EQ(75, mt.getMinTIme(4, 5, {10, 7, 8, 12, 6, 8}));
 }
 
 int runAllTests() {
