@@ -84,6 +84,8 @@
 #include <missing_and_repeating_number.h>
 #include <min_unsorted_subarray_sorts_array.h>
 #include <minimum_time_to_finish_jobs.h>
+#include <longest_common_subsequence.h>
+
 
 using namespace std::literals;
 
@@ -1038,6 +1040,12 @@ TEST(MinimumTimeToFinishAllJobs, SampleArrays) {
     MinimumTimeToFinishAllJobs mt;
     ASSERT_EQ(50, mt.getMinTIme(2, 5, {4, 5, 10}));
     ASSERT_EQ(75, mt.getMinTIme(4, 5, {10, 7, 8, 12, 6, 8}));
+}
+
+TEST(LongestCommonSubsequence, SampleStrings) {
+    LongestCommonSubsequence lcs;
+    ASSERT_TRUE(std::string{"ADH"} == lcs.getLCS("ABCDGH", "AEDFHR"));
+    ASSERT_TRUE(std::string{"GTAB"} == lcs.getLCS("AGGTAB", "GXTXAYB"));
 }
 
 int runAllTests() {
