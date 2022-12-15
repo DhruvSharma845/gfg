@@ -85,6 +85,7 @@
 #include <min_unsorted_subarray_sorts_array.h>
 #include <minimum_time_to_finish_jobs.h>
 #include <longest_common_subsequence.h>
+#include <wildcard_pattern_matching.h>
 
 
 using namespace std::literals;
@@ -1046,6 +1047,13 @@ TEST(LongestCommonSubsequence, SampleStrings) {
     LongestCommonSubsequence lcs;
     ASSERT_TRUE(std::string{"ADH"} == lcs.getLCS("ABCDGH", "AEDFHR"));
     ASSERT_TRUE(std::string{"GTAB"} == lcs.getLCS("AGGTAB", "GXTXAYB"));
+}
+
+TEST(WildcardPatternMatching, SampleStrings) {
+    WildcardPatternMatching wpm;
+    ASSERT_TRUE(wpm.doesMatch("baaabab", "*****ba*****ab"));
+    ASSERT_TRUE(wpm.doesMatch("baaabab", "baaa?ab"));
+    ASSERT_FALSE(wpm.doesMatch("baaabab", "a*ab"));
 }
 
 int runAllTests() {
