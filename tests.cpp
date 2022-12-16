@@ -86,6 +86,7 @@
 #include <minimum_time_to_finish_jobs.h>
 #include <longest_common_subsequence.h>
 #include <wildcard_pattern_matching.h>
+#include <m_coloring.h>
 
 
 using namespace std::literals;
@@ -1054,6 +1055,17 @@ TEST(WildcardPatternMatching, SampleStrings) {
     ASSERT_TRUE(wpm.doesMatch("baaabab", "*****ba*****ab"));
     ASSERT_TRUE(wpm.doesMatch("baaabab", "baaa?ab"));
     ASSERT_FALSE(wpm.doesMatch("baaabab", "a*ab"));
+}
+
+TEST(MColoringGraph, SampleGraph) {
+    UndirectedUnweightedGraph<int> g(4);
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(0, 3);
+    g.addEdge(1, 2);
+    g.addEdge(2, 3);
+    MColoringGraph mc;
+    ASSERT_TRUE(mc.isMColorable(g, 3));
 }
 
 int runAllTests() {
