@@ -87,7 +87,7 @@
 #include <longest_common_subsequence.h>
 #include <wildcard_pattern_matching.h>
 #include <m_coloring.h>
-
+#include <peak_element_array.h>
 
 using namespace std::literals;
 
@@ -1066,6 +1066,13 @@ TEST(MColoringGraph, SampleGraph) {
     g.addEdge(2, 3);
     MColoringGraph mc;
     ASSERT_TRUE(mc.isMColorable(g, 3));
+}
+
+TEST(PeakElement, SampleArrays) {
+    PeakElement pe;
+    ASSERT_EQ(20, pe.getPeakElement({5, 10, 20, 15}));
+    ASSERT_EQ(20, pe.getPeakElement({10, 20, 15, 2, 23, 90, 67}));
+    ASSERT_EQ(20, pe.getPeakElement({ 1, 3, 20, 4, 1, 0 }));
 }
 
 int runAllTests() {
