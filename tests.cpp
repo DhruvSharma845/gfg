@@ -88,6 +88,7 @@
 #include <wildcard_pattern_matching.h>
 #include <m_coloring.h>
 #include <peak_element_array.h>
+#include <product_array_except_itself.h>
 
 using namespace std::literals;
 
@@ -1073,6 +1074,13 @@ TEST(PeakElement, SampleArrays) {
     ASSERT_EQ(20, pe.getPeakElement({5, 10, 20, 15}));
     ASSERT_EQ(20, pe.getPeakElement({10, 20, 15, 2, 23, 90, 67}));
     ASSERT_EQ(20, pe.getPeakElement({ 1, 3, 20, 4, 1, 0 }));
+}
+
+TEST(ProductArrayExceptItself, SampleArray) {
+    ProductArrayExceptItself pa;
+    auto res = pa.getProdArray({10, 3, 5, 6, 2});
+    std::vector<int> expectedRes{180, 600, 360, 300, 900};
+    testArrays(res, expectedRes);
 }
 
 int runAllTests() {
