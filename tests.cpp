@@ -89,6 +89,7 @@
 #include <m_coloring.h>
 #include <peak_element_array.h>
 #include <product_array_except_itself.h>
+#include <remove_duplicates_unsorted_linked_list.h>
 
 using namespace std::literals;
 
@@ -1081,6 +1082,22 @@ TEST(ProductArrayExceptItself, SampleArray) {
     auto res = pa.getProdArray({10, 3, 5, 6, 2});
     std::vector<int> expectedRes{180, 600, 360, 300, 900};
     testArrays(res, expectedRes);
+}
+
+TEST(RemoveDuplicatesInUnsortedLL, SampleLL) {
+    SinglyLinkedList<int> sll;
+    sll.addHead(1);
+    auto* head = sll.getHead();
+    head->setNext(new SLLNode<int>(1, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(3, nullptr));
+    head->getNext()->getNext()->setNext(new SLLNode<int>(4, nullptr));
+    head->getNext()->getNext()->getNext()->setNext(new SLLNode<int>(4, nullptr));
+
+    RemoveDuplicatesInUnsortedLL<int> rd;
+    rd.removeDuplicates(sll);
+    ASSERT_EQ(sll.getHead()->getData(), 1);
+    ASSERT_EQ(sll.getHead()->getNext()->getData(), 3);
+    ASSERT_EQ(sll.getHead()->getNext()->getNext()->getData(), 4);
 }
 
 int runAllTests() {
