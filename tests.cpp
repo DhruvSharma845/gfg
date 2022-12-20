@@ -90,6 +90,7 @@
 #include <peak_element_array.h>
 #include <product_array_except_itself.h>
 #include <remove_duplicates_unsorted_linked_list.h>
+#include <bst_from_preorder.h>
 
 using namespace std::literals;
 
@@ -1098,6 +1099,16 @@ TEST(RemoveDuplicatesInUnsortedLL, SampleLL) {
     ASSERT_EQ(sll.getHead()->getData(), 1);
     ASSERT_EQ(sll.getHead()->getNext()->getData(), 3);
     ASSERT_EQ(sll.getHead()->getNext()->getNext()->getData(), 4);
+}
+
+TEST(BSTFromPreorder, SamplePreorderArray) {
+    BSTFromPreorder bfp;
+    auto bst = bfp.createBST({10, 5, 1, 7, 40, 50});
+    BinaryTreeNode<int>* node = bst.getRoot().get();
+    ASSERT_TRUE(node != nullptr);
+    ASSERT_EQ(node->getData(), 10);
+    ASSERT_EQ(node->getLeft()->getData(), 5);
+    ASSERT_EQ(node->getRight()->getData(), 40);
 }
 
 int runAllTests() {
