@@ -91,6 +91,7 @@
 #include <product_array_except_itself.h>
 #include <remove_duplicates_unsorted_linked_list.h>
 #include <bst_from_preorder.h>
+#include <check_if_all_levels_bt_are_anagram.h>
 
 using namespace std::literals;
 
@@ -1109,6 +1110,30 @@ TEST(BSTFromPreorder, SamplePreorderArray) {
     ASSERT_EQ(node->getData(), 10);
     ASSERT_EQ(node->getLeft()->getData(), 5);
     ASSERT_EQ(node->getRight()->getData(), 40);
+}
+
+TEST(IfAllLevelsOfBinaryTreeAnagram, SampleTrees) {
+    BinaryTree<int> bt1;
+    using Dir = BinaryTreeNode<int>::Direction;
+    bt1.addRoot(1);
+    auto* root = bt1.getRoot().get();
+    root->addChild(3, Dir::Left);
+    root->addChild(2, Dir::Right);
+
+    root->getRight()->addChild(5, Dir::Left);
+    root->getRight()->addChild(4, Dir::Right);
+
+    BinaryTree<int> bt2;
+    bt2.addRoot(1);
+    auto* root1 = bt2.getRoot().get();
+    root1->addChild(2, Dir::Left);
+    root1->addChild(3, Dir::Right);
+
+    root1->getLeft()->addChild(4, Dir::Left);
+    root1->getLeft()->addChild(5, Dir::Right);
+
+    IfAllLevelsOfBinaryTreeAnagram ala;
+    ASSERT_TRUE(ala.isAllLevelsAnagram(bt1, bt2));
 }
 
 int runAllTests() {
