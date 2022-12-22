@@ -92,6 +92,7 @@
 #include <remove_duplicates_unsorted_linked_list.h>
 #include <bst_from_preorder.h>
 #include <check_if_all_levels_bt_are_anagram.h>
+#include <preorder_predecessor_binary_tree.h>
 
 using namespace std::literals;
 
@@ -1134,6 +1135,27 @@ TEST(IfAllLevelsOfBinaryTreeAnagram, SampleTrees) {
 
     IfAllLevelsOfBinaryTreeAnagram ala;
     ASSERT_TRUE(ala.isAllLevelsAnagram(bt1, bt2));
+}
+
+TEST(PreorderPredecessorBinaryTree, SampleTree) {
+    BinaryTree<int> bt1;
+    using Dir = BinaryTreeNode<int>::Direction;
+    bt1.addRoot(20);
+    auto* root = bt1.getRoot().get();
+    root->addChild(10, Dir::Left);
+    root->addChild(26, Dir::Right);
+
+    root->getLeft()->addChild(4, Dir::Left);
+    root->getLeft()->addChild(18, Dir::Right);
+
+    root->getRight()->addChild(24, Dir::Left);
+    root->getRight()->addChild(27, Dir::Right);
+
+    root->getLeft()->getRight()->addChild(14, Dir::Left);
+
+    PreorderPredecessorBinaryTree<int> pp;
+    ASSERT_EQ(10, pp.getPreorderPredecessor(bt1, 4));
+    ASSERT_EQ(4, pp.getPreorderPredecessor(bt1, 18));
 }
 
 int runAllTests() {
