@@ -93,6 +93,7 @@
 #include <bst_from_preorder.h>
 #include <check_if_all_levels_bt_are_anagram.h>
 #include <preorder_predecessor_binary_tree.h>
+#include <largest_bst_in_binary_tree.h>
 
 using namespace std::literals;
 
@@ -1156,6 +1157,27 @@ TEST(PreorderPredecessorBinaryTree, SampleTree) {
     PreorderPredecessorBinaryTree<int> pp;
     ASSERT_EQ(10, pp.getPreorderPredecessor(bt1, 4));
     ASSERT_EQ(4, pp.getPreorderPredecessor(bt1, 18));
+}
+
+TEST(LargestBSTSubtreeInBT, SampleBinaryTree) {
+    BinaryTree<int> bt1;
+    using Dir = BinaryTreeNode<int>::Direction;
+    bt1.addRoot(50);
+    auto* root = bt1.getRoot().get();
+    root->addChild(30, Dir::Left);
+    root->addChild(60, Dir::Right);
+
+    root->getLeft()->addChild(5, Dir::Left);
+    root->getLeft()->addChild(20, Dir::Right);
+
+    root->getRight()->addChild(45, Dir::Left);
+    root->getRight()->addChild(70, Dir::Right);
+
+    root->getRight()->getRight()->addChild(65, Dir::Left);
+    root->getRight()->getRight()->addChild(80, Dir::Right);
+
+    LargestBSTSubtreeInBT lbst;
+    ASSERT_EQ(5, lbst.getSize(bt1));
 }
 
 int runAllTests() {
