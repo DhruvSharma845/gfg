@@ -94,6 +94,7 @@
 #include <check_if_all_levels_bt_are_anagram.h>
 #include <preorder_predecessor_binary_tree.h>
 #include <largest_bst_in_binary_tree.h>
+#include <kth_smallest_element_unsorted_array.h>
 
 using namespace std::literals;
 
@@ -1178,6 +1179,12 @@ TEST(LargestBSTSubtreeInBT, SampleBinaryTree) {
 
     LargestBSTSubtreeInBT lbst;
     ASSERT_EQ(5, lbst.getSize(bt1));
+}
+
+TEST(KthSmallestElement, SampleArrays) {
+    KthSmallestElement ks;
+    ASSERT_EQ(7, ks.getKthSmallest({7, 10, 4, 3, 20, 15}, 3));
+    ASSERT_EQ(10, ks.getKthSmallest({7, 10, 4, 3, 20, 15}, 4));
 }
 
 int runAllTests() {
