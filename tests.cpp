@@ -95,6 +95,7 @@
 #include <preorder_predecessor_binary_tree.h>
 #include <largest_bst_in_binary_tree.h>
 #include <kth_smallest_element_unsorted_array.h>
+#include <subarray_with_zero_sum.h>
 
 using namespace std::literals;
 
@@ -1185,6 +1186,18 @@ TEST(KthSmallestElement, SampleArrays) {
     KthSmallestElement ks;
     ASSERT_EQ(7, ks.getKthSmallest({7, 10, 4, 3, 20, 15}, 3));
     ASSERT_EQ(10, ks.getKthSmallest({7, 10, 4, 3, 20, 15}, 4));
+}
+
+TEST(SubarrayWithZeroSum, SampleArray) {
+    SubarrayWithZeroSum szs;
+    auto res = szs.getIndices({4, 2, -3, 1, 6});
+    ASSERT_TRUE(res.has_value());
+    auto& [start, end] = res.value();
+    ASSERT_EQ(1, start);
+    ASSERT_EQ(3, end);
+
+    auto res1 = szs.getIndices({-3, 2, 3, 1, 6});
+    ASSERT_FALSE(res1.has_value());
 }
 
 int runAllTests() {
