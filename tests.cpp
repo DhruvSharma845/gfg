@@ -1,3 +1,4 @@
+#include <limits>
 #include <gtest/gtest.h>
 #include "tests.h"
 
@@ -96,6 +97,7 @@
 #include <largest_bst_in_binary_tree.h>
 #include <kth_smallest_element_unsorted_array.h>
 #include <subarray_with_zero_sum.h>
+#include <shortest_path_acyclic_graph.h>
 
 using namespace std::literals;
 
@@ -1198,6 +1200,24 @@ TEST(SubarrayWithZeroSum, SampleArray) {
 
     auto res1 = szs.getIndices({-3, 2, 3, 1, 6});
     ASSERT_FALSE(res1.has_value());
+}
+
+TEST(ShortestPathAcyclicGraph, SampleGraph) {
+    DirectedWeightedGraph g(6);
+    g.addEdge(0, 1, 5);
+    g.addEdge(0, 2, 3);
+    g.addEdge(1, 3, 6);
+    g.addEdge(1, 2, 2);
+    g.addEdge(2, 4, 4);
+    g.addEdge(2, 5, 2);
+    g.addEdge(2, 3, 7);
+    g.addEdge(3, 4, -1);
+    g.addEdge(4, 5, -2);
+
+    ShortestPathAcyclicGraph spag;
+    std::vector<int> resDistances = spag.getShortestDistances(g, 1);
+    std::vector<int> expectedRes{std::numeric_limits<int>::max(), 0, 2, 6, 5, 3};
+    testArrays(resDistances, expectedRes);
 }
 
 int runAllTests() {
