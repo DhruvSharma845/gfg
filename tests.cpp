@@ -98,6 +98,7 @@
 #include <kth_smallest_element_unsorted_array.h>
 #include <subarray_with_zero_sum.h>
 #include <shortest_path_acyclic_graph.h>
+#include <row_maximum_ones.h>
 
 using namespace std::literals;
 
@@ -1218,6 +1219,17 @@ TEST(ShortestPathAcyclicGraph, SampleGraph) {
     std::vector<int> resDistances = spag.getShortestDistances(g, 1);
     std::vector<int> expectedRes{std::numeric_limits<int>::max(), 0, 2, 6, 5, 3};
     testArrays(resDistances, expectedRes);
+}
+
+TEST(RowWithMaximumOnes, SampleMatrix) {
+    std::vector<std::vector<int>> matrix{ 
+        {0, 0, 0, 1},
+        {0, 1, 1, 1},
+        {1, 1, 1, 1},
+        {0, 0, 0, 0}
+    };
+    RowWithMaximumOnes rmo;
+    ASSERT_EQ(2, rmo.getRowIndex(matrix));
 }
 
 int runAllTests() {
