@@ -99,6 +99,7 @@
 #include <subarray_with_zero_sum.h>
 #include <shortest_path_acyclic_graph.h>
 #include <row_maximum_ones.h>
+#include <triplet_with_given_sum.h>
 
 using namespace std::literals;
 
@@ -1230,6 +1231,18 @@ TEST(RowWithMaximumOnes, SampleMatrix) {
     };
     RowWithMaximumOnes rmo;
     ASSERT_EQ(2, rmo.getRowIndex(matrix));
+}
+
+TEST(TripletWithSumK, SampleArrays) {
+    std::vector<int> v1{ 1, 4, 45, 6, 10, 8 };
+    TripletWithSumK tsk;
+    auto res = tsk.getTriplet(v1, 22);
+    ASSERT_TRUE(res.has_value());
+    auto& [first, second, third] = res.value();
+    ASSERT_TRUE(first == 4 && second == 8  && third == 10);
+
+    auto res1 = tsk.getTriplet(v1, 6);
+    ASSERT_FALSE(res1.has_value());
 }
 
 int runAllTests() {
