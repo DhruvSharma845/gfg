@@ -100,6 +100,7 @@
 #include <shortest_path_acyclic_graph.h>
 #include <row_maximum_ones.h>
 #include <triplet_with_given_sum.h>
+#include <bin_packing_minimize_bins.h>
 
 using namespace std::literals;
 
@@ -1243,6 +1244,12 @@ TEST(TripletWithSumK, SampleArrays) {
 
     auto res1 = tsk.getTriplet(v1, 6);
     ASSERT_FALSE(res1.has_value());
+}
+
+TEST(MinimizeBinsUsed, SampleWeights) {
+    MinimizeBinsUsed mb;
+    ASSERT_EQ(2, mb.getMinimumBins({4, 8, 1, 4, 2, 1}, 10));
+    ASSERT_EQ(4, mb.getMinimumBins({9, 8, 2, 2, 5, 4}, 10));
 }
 
 int runAllTests() {
