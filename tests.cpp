@@ -1,6 +1,7 @@
 #include <limits>
 #include <gtest/gtest.h>
-#include "tests.h"
+
+#include "utility.h"
 
 #include <level_order_traversal_in_spiral_form.h>
 #include <queue_using_stacks.h>
@@ -104,14 +105,6 @@
 #include <edit_distance.h>
 
 using namespace std::literals;
-
-template <typename T>
-void testArrays(const std::vector<T>& result, const std::vector<T>& expected) {
-    ASSERT_EQ(expected.size(), result.size());
-    for(int i = 0; i < result.size(); ++i) {
-        EXPECT_EQ(result[i], expected[i]);
-    }
-}
 
 /**
  * TEST(x, y) {
@@ -1258,9 +1251,4 @@ TEST(EditDistance, SampleStrings) {
     ASSERT_EQ(1, ed.getEditsRequired("geek", "gesek"));
     ASSERT_EQ(1, ed.getEditsRequired("cat", "cut"));
     ASSERT_EQ(3, ed.getEditsRequired("sunday", "saturday"));
-}
-
-int runAllTests() {
-    ::testing::InitGoogleTest();
-    return RUN_ALL_TESTS();
 }

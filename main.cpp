@@ -1,7 +1,8 @@
-#include "tests.h"
 #include <iostream>
+#include <gtest/gtest.h>
 
 int main(int, char**) {
     std::cout << "Running google tests!!!";
-    return runAllTests();
+    ::testing::InitGoogleTest();
+    return RUN_ALL_TESTS();
 }
