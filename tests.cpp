@@ -101,6 +101,7 @@
 #include <row_maximum_ones.h>
 #include <triplet_with_given_sum.h>
 #include <bin_packing_minimize_bins.h>
+#include <edit_distance.h>
 
 using namespace std::literals;
 
@@ -1250,6 +1251,13 @@ TEST(MinimizeBinsUsed, SampleWeights) {
     MinimizeBinsUsed mb;
     ASSERT_EQ(2, mb.getMinimumBins({4, 8, 1, 4, 2, 1}, 10));
     ASSERT_EQ(4, mb.getMinimumBins({9, 8, 2, 2, 5, 4}, 10));
+}
+
+TEST(EditDistance, SampleStrings) {
+    EditDistance ed;
+    ASSERT_EQ(1, ed.getEditsRequired("geek", "gesek"));
+    ASSERT_EQ(1, ed.getEditsRequired("cat", "cut"));
+    ASSERT_EQ(3, ed.getEditsRequired("sunday", "saturday"));
 }
 
 int runAllTests() {
