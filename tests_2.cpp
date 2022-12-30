@@ -4,6 +4,7 @@
 
 #include <max_length_prefix_that_is_subsequence.h>
 #include <sudoku.h>
+#include <minimum_in_sorted_rotated_array.h>
 
 /**
  * TEST(x, y) {
@@ -46,5 +47,11 @@ TEST(SudokuSolver, SampleBoard) {
     for(int i = 0; i < resBoard.size(); ++i) {
         testArrays(resBoard[i], expectedBoard[i]);
     }
+}
+
+TEST(MinimumInSortedAndRotatedArray, SampleArrays) {
+    MinimumInSortedAndRotatedArray msra;
+    ASSERT_EQ(msra.getMin({5, 6, 1, 2, 3, 4}), 1);
+    ASSERT_EQ(msra.getMin({2, 1}), 1);
 }
 
