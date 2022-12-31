@@ -5,6 +5,7 @@
 #include <max_length_prefix_that_is_subsequence.h>
 #include <sudoku.h>
 #include <minimum_in_sorted_rotated_array.h>
+#include <segregate_even_odd.h>
 
 /**
  * TEST(x, y) {
@@ -53,5 +54,12 @@ TEST(MinimumInSortedAndRotatedArray, SampleArrays) {
     MinimumInSortedAndRotatedArray msra;
     ASSERT_EQ(msra.getMin({5, 6, 1, 2, 3, 4}), 1);
     ASSERT_EQ(msra.getMin({2, 1}), 1);
+}
+
+TEST(EvenOddSegregator, SampleArray) {
+    EvenOddSegregator eos;
+    auto res = eos.doSegregate({12, 34, 45, 9, 8, 90, 3});
+    std::vector<int> expectedRes{12, 34, 8, 90, 45, 9, 3};
+    testArrays(res, expectedRes);
 }
 
