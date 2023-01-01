@@ -6,6 +6,7 @@
 #include <sudoku.h>
 #include <minimum_in_sorted_rotated_array.h>
 #include <segregate_even_odd.h>
+#include <find_duplicate_in_linear_time_and_constant_space.h>
 
 /**
  * TEST(x, y) {
@@ -60,6 +61,14 @@ TEST(EvenOddSegregator, SampleArray) {
     EvenOddSegregator eos;
     auto res = eos.doSegregate({12, 34, 45, 9, 8, 90, 3});
     std::vector<int> expectedRes{12, 34, 8, 90, 45, 9, 3};
+    testArrays(res, expectedRes);
+}
+
+TEST(FindDuplicatesIn1ToN, SampleArray) {
+    std::vector<int> v{1, 2, 3, 6, 3, 6, 1};
+    FindDuplicatesIn1ToN fd;
+    auto res = fd.findDuplicates(v);
+    std::vector<int> expectedRes{1, 3, 6};
     testArrays(res, expectedRes);
 }
 
