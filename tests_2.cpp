@@ -7,6 +7,7 @@
 #include <minimum_in_sorted_rotated_array.h>
 #include <segregate_even_odd.h>
 #include <find_duplicate_in_linear_time_and_constant_space.h>
+#include <equilibrium_index_array.h>
 
 /**
  * TEST(x, y) {
@@ -70,5 +71,11 @@ TEST(FindDuplicatesIn1ToN, SampleArray) {
     auto res = fd.findDuplicates(v);
     std::vector<int> expectedRes{1, 3, 6};
     testArrays(res, expectedRes);
+}
+
+TEST(EquilibriumIndex, SampleArrays) {
+    EquilibriumIndex ei;
+    ASSERT_EQ(6, ei.getIndex({-7, 1, 5, 2, -4, 3, 0}));
+    ASSERT_EQ(-1, ei.getIndex({1,2,3}));
 }
 
