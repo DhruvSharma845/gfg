@@ -24,6 +24,7 @@ public:
     SinglyLinkedList(): head{nullptr} {}
     void addHead(T _data);
     SLLNode<T>* getHead() const;
+    void setHead(SLLNode<T>* node);
 private:
     SLLNode<T>* head;
 };
@@ -36,4 +37,9 @@ void SinglyLinkedList<T>::addHead(T _data) {
 template <typename T>
 SLLNode<T>* SinglyLinkedList<T>::getHead() const {
     return head;
+}
+
+template <typename T>
+void SinglyLinkedList<T>::setHead(SLLNode<T>* node) {
+    head = node;
 }

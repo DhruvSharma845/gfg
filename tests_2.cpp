@@ -8,6 +8,7 @@
 #include <segregate_even_odd.h>
 #include <find_duplicate_in_linear_time_and_constant_space.h>
 #include <equilibrium_index_array.h>
+#include <pairwise_swap_nodes.h>
 
 /**
  * TEST(x, y) {
@@ -77,5 +78,24 @@ TEST(EquilibriumIndex, SampleArrays) {
     EquilibriumIndex ei;
     ASSERT_EQ(6, ei.getIndex({-7, 1, 5, 2, -4, 3, 0}));
     ASSERT_EQ(-1, ei.getIndex({1,2,3}));
+}
+
+TEST(PairwiseSwapNodes, SampleLL) {
+    SinglyLinkedList<int> sll;
+    sll.addHead(1);
+    auto* head = sll.getHead();
+    head->setNext(new SLLNode<int>(2, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(3, nullptr));
+    head->getNext()->getNext()->setNext(new SLLNode<int>(4, nullptr));
+    head->getNext()->getNext()->getNext()->setNext(new SLLNode<int>(5, nullptr));
+    head->getNext()->getNext()->getNext()->getNext()->setNext(new SLLNode<int>(6, nullptr));
+
+    PairwiseSwapNodes<int> psn;
+    psn.doSwap(sll);
+
+    ASSERT_EQ(2, sll.getHead()->getData());
+    ASSERT_EQ(1, sll.getHead()->getNext()->getData());
+    ASSERT_EQ(4, sll.getHead()->getNext()->getNext()->getData());
+    ASSERT_EQ(3, sll.getHead()->getNext()->getNext()->getNext()->getData());
 }
 
