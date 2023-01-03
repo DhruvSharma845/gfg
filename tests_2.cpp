@@ -9,6 +9,7 @@
 #include <find_duplicate_in_linear_time_and_constant_space.h>
 #include <equilibrium_index_array.h>
 #include <pairwise_swap_nodes.h>
+#include <stock_span_problem.h>
 
 /**
  * TEST(x, y) {
@@ -97,5 +98,12 @@ TEST(PairwiseSwapNodes, SampleLL) {
     ASSERT_EQ(1, sll.getHead()->getNext()->getData());
     ASSERT_EQ(4, sll.getHead()->getNext()->getNext()->getData());
     ASSERT_EQ(3, sll.getHead()->getNext()->getNext()->getNext()->getData());
+}
+
+TEST(StockSpan, SamplePricesArray) {
+    StockSpan ss;
+    auto res = ss.findCountOfLowPriceDays({10, 4, 5, 90, 120, 80});
+    std::vector<int> expectedRes{1, 1, 2, 4, 5, 1};
+    testArrays(res, expectedRes);
 }
 
