@@ -1,3 +1,4 @@
+#include <queue>
 #include <gtest/gtest.h>
 
 #include "utility.h"
@@ -10,6 +11,7 @@
 #include <equilibrium_index_array.h>
 #include <pairwise_swap_nodes.h>
 #include <stock_span_problem.h>
+#include <interleave_halves_of_queue.h>
 
 /**
  * TEST(x, y) {
@@ -105,5 +107,23 @@ TEST(StockSpan, SamplePricesArray) {
     auto res = ss.findCountOfLowPriceDays({10, 4, 5, 90, 120, 80});
     std::vector<int> expectedRes{1, 1, 2, 4, 5, 1};
     testArrays(res, expectedRes);
+}
+
+TEST(HalvesInterleaving, SampleQueue) {
+    std::queue<int> q;
+    q.push(1);
+    q.push(2);
+    q.push(3);
+    q.push(4);
+    q.push(5);
+    q.push(6);
+    HalvesInterleaving hi;
+    hi.doInterleaving(q);
+    ASSERT_EQ(6, q.size());
+    ASSERT_EQ(1, q.front());
+    q.pop();
+    ASSERT_EQ(4, q.front());
+    q.pop();
+    ASSERT_EQ(2, q.front());
 }
 
