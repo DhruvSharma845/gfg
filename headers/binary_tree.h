@@ -16,6 +16,7 @@ public:
     T getData() { return data; }
     void setLeft(std::shared_ptr<BinaryTreeNode<T>> node) { left = node; }
     void setRight(std::shared_ptr<BinaryTreeNode<T>> node) { right = node; }
+    void setData(T& _data) { data = _data; }
 private:
     T data;
     std::shared_ptr<BinaryTreeNode<T>> left;

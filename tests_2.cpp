@@ -12,6 +12,7 @@
 #include <pairwise_swap_nodes.h>
 #include <stock_span_problem.h>
 #include <interleave_halves_of_queue.h>
+#include <convert_bt_node_stores_sum_right_subtree.h>
 
 /**
  * TEST(x, y) {
@@ -127,3 +128,24 @@ TEST(HalvesInterleaving, SampleQueue) {
     ASSERT_EQ(2, q.front());
 }
 
+TEST(ConvertBinaryTreeNodeStoresSumOfRight, SampleBT) {
+    BinaryTree<int> bt;
+    bt.addRoot(1);
+    BinaryTreeNode<int>* root = bt.getRoot().get();
+    root->addChild(2, BinaryTreeNode<int>::Direction::Left);
+    root->addChild(3, BinaryTreeNode<int>::Direction::Right);
+
+    root->getLeft()->addChild(4, BinaryTreeNode<int>::Direction::Left);
+    root->getLeft()->addChild(5, BinaryTreeNode<int>::Direction::Right);
+    
+    root->getRight()->addChild(6, BinaryTreeNode<int>::Direction::Right);
+    
+    ConvertBinaryTreeNodeStoresSumOfRight cb;
+    cb.doConversion(bt);
+
+    ASSERT_EQ(bt.getRoot()->getData(), 10);
+    ASSERT_EQ(bt.getRoot()->getLeft()->getData(), 7);
+    ASSERT_EQ(bt.getRoot()->getLeft()->getLeft()->getData(), 4);
+    ASSERT_EQ(bt.getRoot()->getRight()->getData(), 9);
+    ASSERT_EQ(bt.getRoot()->getRight()->getRight()->getData(), 6);
+}
