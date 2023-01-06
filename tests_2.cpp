@@ -13,6 +13,7 @@
 #include <stock_span_problem.h>
 #include <interleave_halves_of_queue.h>
 #include <convert_bt_node_stores_sum_right_subtree.h>
+#include <merge_bsts_with_limited_space.h>
 
 /**
  * TEST(x, y) {
@@ -149,3 +150,21 @@ TEST(ConvertBinaryTreeNodeStoresSumOfRight, SampleBT) {
     ASSERT_EQ(bt.getRoot()->getRight()->getData(), 9);
     ASSERT_EQ(bt.getRoot()->getRight()->getRight()->getData(), 6);
 }
+
+TEST(MergeBST, SampleBSTs) {
+    BinarySearchTree<int> bst1;
+    bst1.insert(8);
+    bst1.insert(2);
+    bst1.insert(10);
+    bst1.insert(1);
+
+    BinarySearchTree<int> bst2;
+    bst2.insert(5);
+    bst2.insert(3);
+    bst2.insert(0);
+
+    MergeBST mb;
+    auto res = mb.getInorderOfMergedBSTS(bst1, bst2);
+    std::vector<int> expectedRes{0, 1, 2, 3, 5, 8, 10};
+    testArrays(res, expectedRes);
+} 

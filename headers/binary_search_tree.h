@@ -9,10 +9,12 @@ class BinarySearchTree {
 public:
     void insert(T _data);
     std::shared_ptr<BinaryTreeNode<T>> getRoot() const { return root; }
+    int getSize() const { return sz; }
 private:
     std::shared_ptr<BinaryTreeNode<T>> insert(std::shared_ptr<BinaryTreeNode<T>> node, T _data);
 private:
     std::shared_ptr<BinaryTreeNode<T>> root{nullptr};
+    int sz{0};
 };
 
 template <typename T>
@@ -33,4 +35,5 @@ std::shared_ptr<BinaryTreeNode<T>> BinarySearchTree<T>::insert(std::shared_ptr<B
 template <typename T>
 void BinarySearchTree<T>::insert(T _data) {
     root = insert(root, _data);
+    ++sz;
 }
