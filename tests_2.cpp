@@ -14,6 +14,7 @@
 #include <interleave_halves_of_queue.h>
 #include <convert_bt_node_stores_sum_right_subtree.h>
 #include <merge_bsts_with_limited_space.h>
+#include <check_array_is_heap.h>
 
 /**
  * TEST(x, y) {
@@ -168,3 +169,9 @@ TEST(MergeBST, SampleBSTs) {
     std::vector<int> expectedRes{0, 1, 2, 3, 5, 8, 10};
     testArrays(res, expectedRes);
 } 
+
+TEST(IsArrayAHeap, SampleArrays) {
+    IsArrayAHeap iah;
+    ASSERT_TRUE(iah.doCheck({90, 15, 10, 7, 12, 2}));
+    ASSERT_FALSE(iah.doCheck({9, 15, 10, 7, 12, 11}));
+}
