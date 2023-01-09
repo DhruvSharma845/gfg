@@ -15,6 +15,7 @@
 #include <convert_bt_node_stores_sum_right_subtree.h>
 #include <merge_bsts_with_limited_space.h>
 #include <check_array_is_heap.h>
+#include <vertical_order_traversal_binary_tree.h>
 
 /**
  * TEST(x, y) {
@@ -174,4 +175,37 @@ TEST(IsArrayAHeap, SampleArrays) {
     IsArrayAHeap iah;
     ASSERT_TRUE(iah.doCheck({90, 15, 10, 7, 12, 2}));
     ASSERT_FALSE(iah.doCheck({9, 15, 10, 7, 12, 11}));
+}
+
+TEST(VerticalOrderTraversal, SampleTree) {
+    BinaryTree<int> bt;
+    bt.addRoot(1);
+    BinaryTreeNode<int>* root = bt.getRoot().get();
+    root->addChild(2, BinaryTreeNode<int>::Direction::Left);
+    root->addChild(3, BinaryTreeNode<int>::Direction::Right);
+
+    root->getLeft()->addChild(4, BinaryTreeNode<int>::Direction::Left);
+    root->getLeft()->addChild(5, BinaryTreeNode<int>::Direction::Right);
+    
+    root->getRight()->addChild(6, BinaryTreeNode<int>::Direction::Left);
+    root->getRight()->addChild(7, BinaryTreeNode<int>::Direction::Right);
+
+    root->getRight()->getRight()->addChild(8, BinaryTreeNode<int>::Direction::Left);
+
+    VerticalOrderTraversal vot;
+    auto res = vot.getVerticalOrder(bt);
+
+    ASSERT_EQ(5, res.size());
+    std::map<int, std::vector<int>> expectedRes{
+        std::make_pair<int, std::vector<int>>(-2, {4}),
+        std::make_pair<int, std::vector<int>>(-1, {2}),
+        std::make_pair<int, std::vector<int>>(0, {1,5,6}),
+        std::make_pair<int, std::vector<int>>(1, {3, 8}),
+        std::make_pair<int, std::vector<int>>(2, {7}),
+    };
+
+    for(const auto& [horDist, elems]: expectedRes) {
+        ASSERT_TRUE(res.find(horDist) != res.end());
+        testArrays(res.at(horDist), elems);
+    }
 }
