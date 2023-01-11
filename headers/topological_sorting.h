@@ -8,13 +8,13 @@
 template <typename T>
 class TopologicalSort {
 public:
-    std::vector<T> doSort(DirectedUnweightedGraph<T>& graph);
+    std::vector<T> doSort(const DirectedUnweightedGraph<T>& graph);
 private:
-    void dfsRecursive(DirectedUnweightedGraph<T>& graph, int vertex, std::stack<T>& st, std::vector<bool>& visited);
+    void dfsRecursive(const DirectedUnweightedGraph<T>& graph, int vertex, std::stack<T>& st, std::vector<bool>& visited);
 };
 
 template <typename T>
-std::vector<T> TopologicalSort<T>::doSort(DirectedUnweightedGraph<T>& graph) {
+std::vector<T> TopologicalSort<T>::doSort(const DirectedUnweightedGraph<T>& graph) {
     std::stack<T> st;
     std::vector<bool> visited(graph.getNumOfVertices(), false);
     for(int i = 0; i < graph.getNumOfVertices(); ++i) {
@@ -31,7 +31,7 @@ std::vector<T> TopologicalSort<T>::doSort(DirectedUnweightedGraph<T>& graph) {
 }
 
 template <typename T>
-void TopologicalSort<T>::dfsRecursive(DirectedUnweightedGraph<T>& graph, int vertex, std::stack<T>& st, std::vector<bool>& visited) {
+void TopologicalSort<T>::dfsRecursive(const DirectedUnweightedGraph<T>& graph, int vertex, std::stack<T>& st, std::vector<bool>& visited) {
     visited[vertex] = true;
     for(const auto& neighbor: graph.getNeighbors(vertex)) {
         if(visited[neighbor] == false) {

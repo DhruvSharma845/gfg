@@ -16,6 +16,7 @@
 #include <merge_bsts_with_limited_space.h>
 #include <check_array_is_heap.h>
 #include <vertical_order_traversal_binary_tree.h>
+#include <strongly_connected_components.h>
 
 /**
  * TEST(x, y) {
@@ -207,5 +208,26 @@ TEST(VerticalOrderTraversal, SampleTree) {
     for(const auto& [horDist, elems]: expectedRes) {
         ASSERT_TRUE(res.find(horDist) != res.end());
         testArrays(res.at(horDist), elems);
+    }
+}
+
+TEST(StronglyConnectedComponents, SampleGraph) {
+    DirectedUnweightedGraph<int> g(5);
+    g.addEdge(0, 2);
+    g.addEdge(0, 3);
+    g.addEdge(1, 0);
+    g.addEdge(2, 1);
+    g.addEdge(3, 4);
+    
+    StronglyConnectedComponents scc;
+    StronglyConnectedComponents::SCCType res = scc.findSCC(g);
+    StronglyConnectedComponents::SCCType expectedRes{
+        {0, 1, 2},
+        {3},
+        {4}
+    };
+    ASSERT_EQ(res.size(), expectedRes.size());
+    for(int i = 0; i < res.size(); ++i) {
+        testArrays(res[i], expectedRes[i]);
     }
 }
