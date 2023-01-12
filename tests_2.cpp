@@ -17,6 +17,7 @@
 #include <check_array_is_heap.h>
 #include <vertical_order_traversal_binary_tree.h>
 #include <strongly_connected_components.h>
+#include <elements_appear_more_than_nbyk.h>
 
 /**
  * TEST(x, y) {
@@ -230,4 +231,12 @@ TEST(StronglyConnectedComponents, SampleGraph) {
     for(int i = 0; i < res.size(); ++i) {
         testArrays(res[i], expectedRes[i]);
     }
+}
+
+TEST(ElementsThatAppearMoreThanNKTimes, SampleArray) {
+    ElementsThatAppearMoreThanNKTimes enk;
+    auto res = enk.findElements({3, 1, 2, 2, 1, 2, 3, 3}, 4);
+    std::vector<int> expectedRes{2, 3};
+
+    testArrays(res, expectedRes);
 }
