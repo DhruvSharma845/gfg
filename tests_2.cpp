@@ -18,6 +18,7 @@
 #include <vertical_order_traversal_binary_tree.h>
 #include <strongly_connected_components.h>
 #include <elements_appear_more_than_nbyk.h>
+#include <pancake_sorting.h>
 
 /**
  * TEST(x, y) {
@@ -238,5 +239,12 @@ TEST(ElementsThatAppearMoreThanNKTimes, SampleArray) {
     auto res = enk.findElements({3, 1, 2, 2, 1, 2, 3, 3}, 4);
     std::vector<int> expectedRes{2, 3};
 
+    testArrays(res, expectedRes);
+}
+
+TEST(PancakeSorting, SampleArray) {
+    PancakeSorting ps;
+    auto res = ps.doSort({23, 10, 20, 11, 12, 6, 7});
+    std::vector<int> expectedRes{ 6, 7, 10, 11, 12, 20, 23};
     testArrays(res, expectedRes);
 }
