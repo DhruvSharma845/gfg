@@ -10,7 +10,9 @@ public:
 
 int FractionalKnapsack::findOptimalValue(std::vector<std::pair<int, int>>& values, int W) {
     std::sort(values.begin(), values.end(), [](const std::pair<int, int>& a, const std::pair<int, int>& b) {
-        return a.second < b.second;
+        int r1 = static_cast<double>(a.second) / static_cast<double>(a.first);
+        int r2 = static_cast<double>(b.second) / static_cast<double>(b.first);
+        return (r1 > r2);
     });
 
     int totalValue = 0;
