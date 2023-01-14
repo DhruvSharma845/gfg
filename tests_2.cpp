@@ -19,6 +19,7 @@
 #include <strongly_connected_components.h>
 #include <elements_appear_more_than_nbyk.h>
 #include <pancake_sorting.h>
+#include <fractional_knapsack.h>
 
 /**
  * TEST(x, y) {
@@ -247,4 +248,14 @@ TEST(PancakeSorting, SampleArray) {
     auto res = ps.doSort({23, 10, 20, 11, 12, 6, 7});
     std::vector<int> expectedRes{ 6, 7, 10, 11, 12, 20, 23};
     testArrays(res, expectedRes);
+}
+
+TEST(FractionalKnapsack, SampleWeightsValues) {
+    FractionalKnapsack fk;
+    std::vector<std::pair<int, int>> weightsAndValues{
+        {10, 60}, 
+        {20, 100}, 
+        {30, 120}
+    };
+    ASSERT_EQ(fk.findOptimalValue(weightsAndValues, 50), 240);
 }
