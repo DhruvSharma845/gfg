@@ -20,6 +20,7 @@
 #include <elements_appear_more_than_nbyk.h>
 #include <pancake_sorting.h>
 #include <fractional_knapsack.h>
+#include <min_cost_path.h>
 
 /**
  * TEST(x, y) {
@@ -258,4 +259,13 @@ TEST(FractionalKnapsack, SampleWeightsValues) {
         {30, 120}
     };
     ASSERT_EQ(fk.findOptimalValue(weightsAndValues, 50), 240);
+}
+
+TEST(MinimumCostPath, SampleCosts) {
+    MinimumCostPath mcp;
+    ASSERT_EQ(8, mcp.calculateCost({ 
+        { 1, 2, 3 }, 
+        { 4, 8, 2 }, 
+        { 1, 5, 3 } 
+    }));
 }
