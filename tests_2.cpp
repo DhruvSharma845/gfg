@@ -21,6 +21,7 @@
 #include <pancake_sorting.h>
 #include <fractional_knapsack.h>
 #include <min_cost_path.h>
+#include <find_patterns_101_in_string.h>
 
 /**
  * TEST(x, y) {
@@ -268,4 +269,12 @@ TEST(MinimumCostPath, SampleCosts) {
         { 4, 8, 2 }, 
         { 1, 5, 3 } 
     }));
+}
+
+TEST(FindPatternsOf101, SampleStrings) {
+    FindPatternsOf101 fp;
+    auto res1 = fp.findCount("1101001");
+    ASSERT_TRUE(res1.has_value());
+    ASSERT_EQ(2, res1.value());
+    ASSERT_EQ(0, fp.findCount("10201").value());
 }
