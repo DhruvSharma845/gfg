@@ -22,6 +22,7 @@
 #include <fractional_knapsack.h>
 #include <min_cost_path.h>
 #include <find_patterns_101_in_string.h>
+#include <all_paths_from_topleft_bottomright.h>
 
 /**
  * TEST(x, y) {
@@ -277,4 +278,22 @@ TEST(FindPatternsOf101, SampleStrings) {
     ASSERT_TRUE(res1.has_value());
     ASSERT_EQ(2, res1.value());
     ASSERT_EQ(0, fp.findCount("10201").value());
+}
+
+TEST(AllPathsFromTopleftToBottomRight, SampleMatrix) {
+    AllPathsFromTopleftToBottomRight ap;
+    AllPathsFromTopleftToBottomRight::Matrix m{ 
+        {1, 2, 3}, 
+        {4, 5, 6} 
+    };
+    auto res = ap.getAllPaths(m);
+    AllPathsFromTopleftToBottomRight::Paths expectedRes{
+        {1, 2, 3, 6 }, 
+        {1, 2, 5, 6 }, 
+        {1, 4, 5, 6 } 
+    };
+    ASSERT_EQ(res.size(), expectedRes.size());
+    for(int i = 0; i < expectedRes.size(); ++i) {
+        testArrays(res[i], expectedRes[i]);
+    }
 }
