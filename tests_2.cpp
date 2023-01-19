@@ -23,6 +23,7 @@
 #include <min_cost_path.h>
 #include <find_patterns_101_in_string.h>
 #include <all_paths_from_topleft_bottomright.h>
+#include <missing_number_in_AP.h>
 
 /**
  * TEST(x, y) {
@@ -296,4 +297,15 @@ TEST(AllPathsFromTopleftToBottomRight, SampleMatrix) {
     for(int i = 0; i < expectedRes.size(); ++i) {
         testArrays(res[i], expectedRes[i]);
     }
+}
+
+TEST(MissingNumberInAP, SampleAPs) {
+    MissingNumberInAP mn;
+    auto res = mn.findMissingNumber({2, 4, 8, 10, 12, 14});
+    ASSERT_TRUE(res.has_value());
+    ASSERT_EQ(res.value(), 6);
+
+    res = mn.findMissingNumber({1, 6, 11, 16, 21, 31});
+    ASSERT_TRUE(res.has_value());
+    ASSERT_EQ(res.value(), 26);
 }
