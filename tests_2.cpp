@@ -24,6 +24,7 @@
 #include <find_patterns_101_in_string.h>
 #include <all_paths_from_topleft_bottomright.h>
 #include <missing_number_in_AP.h>
+#include <max_ji_such_arrj_greater_arri.h>
 
 /**
  * TEST(x, y) {
@@ -308,4 +309,15 @@ TEST(MissingNumberInAP, SampleAPs) {
     res = mn.findMissingNumber({1, 6, 11, 16, 21, 31});
     ASSERT_TRUE(res.has_value());
     ASSERT_EQ(res.value(), 26);
+}
+
+TEST(MaxJISuchThatArrjGreaterThanArri, SampleArrays) {
+    MaxJISuchThatArrjGreaterThanArri mji;
+    auto res1 = mji.findJMinusI({34, 8, 10, 3, 2, 80, 30, 33, 1});
+    ASSERT_TRUE(res1.has_value());
+    ASSERT_EQ(6, res1.value());
+    auto res2 = mji.findJMinusI({9, 2, 3, 4, 5, 6, 7, 8, 18, 0});
+    ASSERT_TRUE(res2.has_value());
+    ASSERT_EQ(8, res2.value());
+    ASSERT_FALSE(mji.findJMinusI({6, 5, 4, 3, 2, 1}).has_value());
 }
