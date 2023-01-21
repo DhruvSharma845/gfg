@@ -25,6 +25,7 @@
 #include <all_paths_from_topleft_bottomright.h>
 #include <missing_number_in_AP.h>
 #include <max_ji_such_arrj_greater_arri.h>
+#include <intersection_sorted_linked_list.h>
 
 /**
  * TEST(x, y) {
@@ -320,4 +321,29 @@ TEST(MaxJISuchThatArrjGreaterThanArri, SampleArrays) {
     ASSERT_TRUE(res2.has_value());
     ASSERT_EQ(8, res2.value());
     ASSERT_FALSE(mji.findJMinusI({6, 5, 4, 3, 2, 1}).has_value());
+}
+
+TEST(SortedLinkedListsIntersection, SampleLLs) {
+    SinglyLinkedList<int> sll;
+    sll.addHead(1);
+    auto* head = sll.getHead();
+    head->setNext(new SLLNode<int>(2, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(3, nullptr));
+    head->getNext()->getNext()->setNext(new SLLNode<int>(4, nullptr));
+    head->getNext()->getNext()->getNext()->setNext(new SLLNode<int>(6, nullptr));
+    
+
+    SinglyLinkedList<int> sll2;
+    sll2.addHead(2);
+    head = sll2.getHead();
+    head->setNext(new SLLNode<int>(4, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(7, nullptr));
+    head->getNext()->getNext()->setNext(new SLLNode<int>(8, nullptr));
+    
+    SortedLinkedListsIntersection slli;
+    SinglyLinkedList<int> res = slli.findIntersection(sll, sll2);
+
+    ASSERT_TRUE(res.getHead() != nullptr);
+    ASSERT_EQ(res.getHead()->getData(), 2);
+    ASSERT_EQ(res.getHead()->getNext()->getData(), 4);
 }
