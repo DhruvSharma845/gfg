@@ -26,6 +26,7 @@
 #include <missing_number_in_AP.h>
 #include <max_ji_such_arrj_greater_arri.h>
 #include <intersection_sorted_linked_list.h>
+#include <merge_overlapping_intervals.h>
 
 /**
  * TEST(x, y) {
@@ -346,4 +347,13 @@ TEST(SortedLinkedListsIntersection, SampleLLs) {
     ASSERT_TRUE(res.getHead() != nullptr);
     ASSERT_EQ(res.getHead()->getData(), 2);
     ASSERT_EQ(res.getHead()->getNext()->getData(), 4);
+}
+
+TEST(MergeOverlappingIntervals, SampleIntervals) {
+    MergeOverlappingIntervals::IntervalArray ia{{1,3},{2,4},{6,8},{9,10}};
+    MergeOverlappingIntervals moi;
+    auto res = moi.mergeIntervals(ia);
+    MergeOverlappingIntervals::IntervalArray expectedRes{{1, 4}, {6, 8}, {9, 10}};
+    ASSERT_EQ(expectedRes.size(), res.size());
+    testArrays(res, expectedRes);
 }
