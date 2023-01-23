@@ -27,6 +27,7 @@
 #include <max_ji_such_arrj_greater_arri.h>
 #include <intersection_sorted_linked_list.h>
 #include <merge_overlapping_intervals.h>
+#include <smallest_multiple_made_of_0_9.h>
 
 /**
  * TEST(x, y) {
@@ -356,4 +357,10 @@ TEST(MergeOverlappingIntervals, SampleIntervals) {
     MergeOverlappingIntervals::IntervalArray expectedRes{{1, 4}, {6, 8}, {9, 10}};
     ASSERT_EQ(expectedRes.size(), res.size());
     testArrays(res, expectedRes);
+}
+
+TEST(SmallestMultipleMadeOf0And9, SampleNumbers) {
+    SmallestMultipleMadeOf0And9 sm;
+    ASSERT_EQ(90, sm.findMultipleOf(5));
+    ASSERT_EQ(9009, sm.findMultipleOf(7));
 }
