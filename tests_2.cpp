@@ -28,6 +28,7 @@
 #include <intersection_sorted_linked_list.h>
 #include <merge_overlapping_intervals.h>
 #include <smallest_multiple_made_of_0_9.h>
+#include <binary_tree_sorted_level_wise.h>
 
 /**
  * TEST(x, y) {
@@ -363,4 +364,24 @@ TEST(SmallestMultipleMadeOf0And9, SampleNumbers) {
     SmallestMultipleMadeOf0And9 sm;
     ASSERT_EQ(90, sm.findMultipleOf(5));
     ASSERT_EQ(9009, sm.findMultipleOf(7));
+}
+
+TEST(IsBinaryTreeLevelSorted, SampleBinaryTree) {
+    BinaryTree<int> bt;
+    bt.addRoot(1);
+    BinaryTreeNode<int>* root = bt.getRoot().get();
+    root->addChild(2, BinaryTreeNode<int>::Direction::Left);
+    root->addChild(3, BinaryTreeNode<int>::Direction::Right);
+
+    root->getLeft()->addChild(4, BinaryTreeNode<int>::Direction::Left);
+    root->getLeft()->addChild(5, BinaryTreeNode<int>::Direction::Right);
+    
+    root->getRight()->addChild(6, BinaryTreeNode<int>::Direction::Left);
+    root->getRight()->addChild(7, BinaryTreeNode<int>::Direction::Right);
+
+    root->getLeft()->getRight()->addChild(8, BinaryTreeNode<int>::Direction::Left);
+    root->getRight()->getRight()->addChild(9, BinaryTreeNode<int>::Direction::Left);
+
+    IsBinaryTreeLevelSorted ibt;
+    ASSERT_TRUE(ibt.isLevelWiseSorted(bt));
 }
