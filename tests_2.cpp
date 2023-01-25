@@ -29,6 +29,7 @@
 #include <merge_overlapping_intervals.h>
 #include <smallest_multiple_made_of_0_9.h>
 #include <binary_tree_sorted_level_wise.h>
+#include <binary_tree_to_bst.h>
 
 /**
  * TEST(x, y) {
@@ -384,4 +385,24 @@ TEST(IsBinaryTreeLevelSorted, SampleBinaryTree) {
 
     IsBinaryTreeLevelSorted ibt;
     ASSERT_TRUE(ibt.isLevelWiseSorted(bt));
+}
+
+TEST(BinaryTreeToBST, SampleBinaryTree) {
+    BinaryTree<int> bt;
+    bt.addRoot(10);
+    BinaryTreeNode<int>* root = bt.getRoot().get();
+    root->addChild(2, BinaryTreeNode<int>::Direction::Left);
+    root->addChild(7, BinaryTreeNode<int>::Direction::Right);
+
+    root->getLeft()->addChild(8, BinaryTreeNode<int>::Direction::Left);
+    root->getLeft()->addChild(4, BinaryTreeNode<int>::Direction::Right);
+    
+    BinaryTreeToBST btb;
+    btb.convert(bt);
+
+    ASSERT_EQ(bt.getRoot()->getData(), 8);
+    ASSERT_EQ(bt.getRoot()->getLeft()->getData(), 4);
+    ASSERT_EQ(bt.getRoot()->getLeft()->getLeft()->getData(), 2);
+    ASSERT_EQ(bt.getRoot()->getLeft()->getRight()->getData(), 7);
+    ASSERT_EQ(bt.getRoot()->getRight()->getData(), 10);
 }
