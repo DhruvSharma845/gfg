@@ -30,6 +30,7 @@
 #include <smallest_multiple_made_of_0_9.h>
 #include <binary_tree_sorted_level_wise.h>
 #include <binary_tree_to_bst.h>
+#include <merge_k_sorted_linked_lists.h>
 
 /**
  * TEST(x, y) {
@@ -405,4 +406,33 @@ TEST(BinaryTreeToBST, SampleBinaryTree) {
     ASSERT_EQ(bt.getRoot()->getLeft()->getLeft()->getData(), 2);
     ASSERT_EQ(bt.getRoot()->getLeft()->getRight()->getData(), 7);
     ASSERT_EQ(bt.getRoot()->getRight()->getData(), 10);
+}
+
+TEST(MergeKSortedLinkedLists, SampleLists) {
+    SinglyLinkedList<int> sll1;
+    sll1.addHead(1);
+    auto* head = sll1.getHead();
+    head->setNext(new SLLNode<int>(3, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(5, nullptr));
+    
+    SinglyLinkedList<int> sll2;
+    sll2.addHead(2);
+    head = sll2.getHead();
+    head->setNext(new SLLNode<int>(7, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(9, nullptr));
+
+    SinglyLinkedList<int> sll3;
+    sll3.addHead(3);
+    head = sll3.getHead();
+    head->setNext(new SLLNode<int>(8, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(10, nullptr));
+
+    std::vector<SinglyLinkedList<int>> v{sll1, sll2, sll3};
+
+    MergeKSortedLinkedLists mks;
+    SinglyLinkedList<int> res = mks.doMerge(v);
+    ASSERT_TRUE(res.getHead() != nullptr);
+    ASSERT_EQ(res.getHead()->getData(), 1);
+    ASSERT_EQ(res.getHead()->getNext()->getData(), 2);
+    ASSERT_EQ(res.getHead()->getNext()->getNext()->getData(), 3);
 }
