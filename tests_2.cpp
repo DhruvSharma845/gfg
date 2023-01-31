@@ -31,6 +31,7 @@
 #include <binary_tree_sorted_level_wise.h>
 #include <binary_tree_to_bst.h>
 #include <merge_k_sorted_linked_lists.h>
+#include <chars_rearrange_to_make_palindrome.h>
 
 /**
  * TEST(x, y) {
@@ -435,4 +436,10 @@ TEST(MergeKSortedLinkedLists, SampleLists) {
     ASSERT_EQ(res.getHead()->getData(), 1);
     ASSERT_EQ(res.getHead()->getNext()->getData(), 2);
     ASSERT_EQ(res.getHead()->getNext()->getNext()->getData(), 3);
+}
+
+TEST(RearrangeCharactersToMakePalindrome, SampleStrings) {
+    RearrangeCharactersToMakePalindrome rc;
+    ASSERT_TRUE(rc.isPalindromable("geeksogeeks"));
+    ASSERT_FALSE(rc.isPalindromable("geeksforgeeks"));
 }
