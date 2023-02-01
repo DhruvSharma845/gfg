@@ -32,6 +32,7 @@
 #include <binary_tree_to_bst.h>
 #include <merge_k_sorted_linked_lists.h>
 #include <chars_rearrange_to_make_palindrome.h>
+#include <eulerian_path_cycle.h>
 
 /**
  * TEST(x, y) {
@@ -442,4 +443,31 @@ TEST(RearrangeCharactersToMakePalindrome, SampleStrings) {
     RearrangeCharactersToMakePalindrome rc;
     ASSERT_TRUE(rc.isPalindromable("geeksogeeks"));
     ASSERT_FALSE(rc.isPalindromable("geeksforgeeks"));
+}
+
+TEST(EulerianPathAndCycleInUndirectedGraph, SampleGraphEulerPath) {
+    UndirectedUnweightedGraph<int> g1(5);
+    g1.addEdge(1, 0);
+    g1.addEdge(0, 2);
+    g1.addEdge(2, 1);
+    g1.addEdge(0, 3);
+    g1.addEdge(3, 4);
+
+    EulerianPathAndCycleInUndirectedGraph ep;
+    ASSERT_TRUE(ep.hasEulerianPath(g1));
+    ASSERT_FALSE(ep.hasEulerianCycle(g1));
+}
+
+TEST(EulerianPathAndCycleInUndirectedGraph, SampleGraphEulerCycle) {
+    EulerianPathAndCycleInUndirectedGraph ep;
+    UndirectedUnweightedGraph<int> g2(5);
+    g2.addEdge(1, 0);
+    g2.addEdge(0, 2);
+    g2.addEdge(2, 1);
+    g2.addEdge(0, 3);
+    g2.addEdge(3, 4);
+    g2.addEdge(4, 0);
+
+    ASSERT_FALSE(ep.hasEulerianPath(g2));
+    ASSERT_TRUE(ep.hasEulerianCycle(g2));
 }
