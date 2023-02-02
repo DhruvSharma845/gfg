@@ -33,6 +33,7 @@
 #include <merge_k_sorted_linked_lists.h>
 #include <chars_rearrange_to_make_palindrome.h>
 #include <eulerian_path_cycle.h>
+#include <k_closest_elements_to_value.h>
 
 /**
  * TEST(x, y) {
@@ -470,4 +471,12 @@ TEST(EulerianPathAndCycleInUndirectedGraph, SampleGraphEulerCycle) {
 
     ASSERT_FALSE(ep.hasEulerianPath(g2));
     ASSERT_TRUE(ep.hasEulerianCycle(g2));
+}
+
+TEST(KClosestElements, SampleArray) {
+    KClosestElements kc;
+    auto res = kc.findKClosest({12, 16, 22, 30, 35, 39, 42, 45, 48, 50, 53, 55, 56}, 35, 4);
+
+    std::vector<int> expectedRes{39, 30, 42, 45};
+    testArrays(res, expectedRes);
 }
