@@ -35,6 +35,7 @@
 #include <eulerian_path_cycle.h>
 #include <k_closest_elements_to_value.h>
 #include <sort_numbers_from_1_to_n2.h>
+#include <minimize_max_difference_between_heights.h>
 
 /**
  * TEST(x, y) {
@@ -487,4 +488,9 @@ TEST(NumberSorterFrom0ToN2, SampleArray) {
     auto res = ns.doSort({0, 23, 14, 12, 9});
     std::vector<int> expectedRes{0, 9, 12, 14, 23};
     testArrays(res, expectedRes);
+}
+
+TEST(MinimizeMaxDifferenceBwHeights, SampleArray) {
+    MinimizeMaxDifferenceBwHeights mm;
+    ASSERT_EQ(8, mm.getDifference({1, 5, 15, 10}, 3));
 }
