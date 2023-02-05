@@ -36,6 +36,7 @@
 #include <k_closest_elements_to_value.h>
 #include <sort_numbers_from_1_to_n2.h>
 #include <minimize_max_difference_between_heights.h>
+#include <minimum_jumps_to_reach_end.h>
 
 /**
  * TEST(x, y) {
@@ -493,4 +494,10 @@ TEST(NumberSorterFrom0ToN2, SampleArray) {
 TEST(MinimizeMaxDifferenceBwHeights, SampleArray) {
     MinimizeMaxDifferenceBwHeights mm;
     ASSERT_EQ(8, mm.getDifference({1, 5, 15, 10}, 3));
+}
+
+TEST(MinimumJumpsToReachEnd, SampleArrays) {
+    MinimumJumpsToReachEnd mj;
+    ASSERT_EQ(3, mj.getMinimumJumps({1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9}));
+    ASSERT_EQ(10, mj.getMinimumJumps({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}));
 }
