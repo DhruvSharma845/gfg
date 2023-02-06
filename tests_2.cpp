@@ -37,6 +37,7 @@
 #include <sort_numbers_from_1_to_n2.h>
 #include <minimize_max_difference_between_heights.h>
 #include <minimum_jumps_to_reach_end.h>
+#include <min_shift_longest_common_prefix.h>
 
 /**
  * TEST(x, y) {
@@ -500,4 +501,10 @@ TEST(MinimumJumpsToReachEnd, SampleArrays) {
     MinimumJumpsToReachEnd mj;
     ASSERT_EQ(3, mj.getMinimumJumps({1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9}));
     ASSERT_EQ(10, mj.getMinimumJumps({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}));
+}
+
+TEST(MinimumShiftForLongestCommonPrefix, SampleStrings) {
+    MinimumShiftForLongestCommonPrefix ms;
+    ASSERT_EQ(1, ms.getMinShift("geeks", "dgeek"));
+    ASSERT_EQ(5, ms.getMinShift("practicegeeks", "coderpractice"));
 }
