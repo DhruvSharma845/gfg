@@ -38,6 +38,7 @@
 #include <minimize_max_difference_between_heights.h>
 #include <minimum_jumps_to_reach_end.h>
 #include <min_shift_longest_common_prefix.h>
+#include <strings_with_spaces.h>
 
 /**
  * TEST(x, y) {
@@ -507,4 +508,20 @@ TEST(MinimumShiftForLongestCommonPrefix, SampleStrings) {
     MinimumShiftForLongestCommonPrefix ms;
     ASSERT_EQ(1, ms.getMinShift("geeks", "dgeek"));
     ASSERT_EQ(5, ms.getMinShift("practicegeeks", "coderpractice"));
+}
+
+TEST(PossibleStringsWithSpaces, SampleString) {
+    PossibleStringsWithSpaces ps;
+    auto res = ps.getPossibleStrings("ABCD");
+    std::vector<std::string> expectedRes{
+        "ABCD",
+        "ABC D",
+        "AB CD",
+        "AB C D",
+        "A BCD",
+        "A BC D",
+        "A B CD",
+        "A B C D"
+    };
+    testArrays(res, expectedRes);
 }
