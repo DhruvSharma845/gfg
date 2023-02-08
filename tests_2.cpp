@@ -39,6 +39,7 @@
 #include <minimum_jumps_to_reach_end.h>
 #include <min_shift_longest_common_prefix.h>
 #include <strings_with_spaces.h>
+#include <element_that_appears_once.h>
 
 /**
  * TEST(x, y) {
@@ -524,4 +525,10 @@ TEST(PossibleStringsWithSpaces, SampleString) {
         "A B C D"
     };
     testArrays(res, expectedRes);
+}
+
+TEST(FindElementThatAppearsOnce, SampleArrays) {
+    FindElementThatAppearsOnce fe;
+    ASSERT_EQ(4, fe.findElement({1, 1, 3, 3, 4, 5, 5, 7, 7, 8, 8}));
+    ASSERT_EQ(8, fe.findElement({1, 1, 3, 3, 4, 4, 5, 5, 7, 7, 8}));
 }
