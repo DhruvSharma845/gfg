@@ -40,6 +40,7 @@
 #include <min_shift_longest_common_prefix.h>
 #include <strings_with_spaces.h>
 #include <element_that_appears_once.h>
+#include <matrix_spiral_format.h>
 
 /**
  * TEST(x, y) {
@@ -531,4 +532,16 @@ TEST(FindElementThatAppearsOnce, SampleArrays) {
     FindElementThatAppearsOnce fe;
     ASSERT_EQ(4, fe.findElement({1, 1, 3, 3, 4, 5, 5, 7, 7, 8, 8}));
     ASSERT_EQ(8, fe.findElement({1, 1, 3, 3, 4, 4, 5, 5, 7, 7, 8}));
+}
+
+TEST(MatrixInSpiralFormat, SampleMatrix) {
+    MatrixInSpiralFormat msf;
+    auto res = msf.getSpiralForm({
+        {1,    2,   3,   4},
+        {5,    6,   7,   8},
+        {9,   10,  11,  12},
+        {13,  14,  15,  16 }
+    });
+    std::vector<int> expectedRes{1, 2, 3, 4, 8, 12, 16, 15, 14, 13, 9, 5, 6, 7, 11, 10};
+    testArrays(res, expectedRes);
 }
