@@ -41,6 +41,7 @@
 #include <strings_with_spaces.h>
 #include <element_that_appears_once.h>
 #include <matrix_spiral_format.h>
+#include <merge_two_sorted_linked_lists.h>
 
 /**
  * TEST(x, y) {
@@ -544,4 +545,31 @@ TEST(MatrixInSpiralFormat, SampleMatrix) {
     });
     std::vector<int> expectedRes{1, 2, 3, 4, 8, 12, 16, 15, 14, 13, 9, 5, 6, 7, 11, 10};
     testArrays(res, expectedRes);
+}
+
+TEST(Merge2SortedLinkedLists, SampleLinkedLists) {
+    SinglyLinkedList<int> sll;
+    sll.addHead(1);
+    auto* head = sll.getHead();
+    head->setNext(new SLLNode<int>(4, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(7, nullptr));
+    head->getNext()->getNext()->setNext(new SLLNode<int>(8, nullptr));
+    head->getNext()->getNext()->getNext()->setNext(new SLLNode<int>(10, nullptr));
+    
+
+    SinglyLinkedList<int> sll2;
+    sll2.addHead(2);
+    head = sll2.getHead();
+    head->setNext(new SLLNode<int>(3, nullptr));
+    head->getNext()->setNext(new SLLNode<int>(6, nullptr));
+    head->getNext()->getNext()->setNext(new SLLNode<int>(9, nullptr));
+
+    Merge2SortedLinkedLists m2s;
+    SinglyLinkedList<int> res = m2s.doMerge(sll, sll2); 
+
+    ASSERT_TRUE(res.getHead() != nullptr);
+    ASSERT_EQ(res.getHead()->getData(), 1);
+    ASSERT_EQ(res.getHead()->getNext()->getData(), 2);
+    ASSERT_EQ(res.getHead()->getNext()->getNext()->getData(), 3);
+    ASSERT_EQ(res.getHead()->getNext()->getNext()->getNext()->getData(), 4);
 }
