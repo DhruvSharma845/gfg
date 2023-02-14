@@ -42,6 +42,7 @@
 #include <element_that_appears_once.h>
 #include <matrix_spiral_format.h>
 #include <merge_two_sorted_linked_lists.h>
+#include <convert_infix_to_postfix.h>
 
 /**
  * TEST(x, y) {
@@ -572,4 +573,11 @@ TEST(Merge2SortedLinkedLists, SampleLinkedLists) {
     ASSERT_EQ(res.getHead()->getNext()->getData(), 2);
     ASSERT_EQ(res.getHead()->getNext()->getNext()->getData(), 3);
     ASSERT_EQ(res.getHead()->getNext()->getNext()->getNext()->getData(), 4);
+}
+
+TEST(InfixToPostfixConverter, SampleExpressions) {
+    InfixToPostfixConverter ipc;
+    ASSERT_EQ(ipc.getPostfix("A+B*C+D"), "ABC*+D+");
+    ASSERT_EQ(ipc.getPostfix("((A+B)-C*(D/E)+F)"), "AB+CDE/*-F+");
+    ASSERT_EQ(ipc.getPostfix("a+b*(c^d-e)^(f+g*h)-i"), "abcd^e-fgh*+^*+i-");
 }
