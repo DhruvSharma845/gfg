@@ -43,6 +43,7 @@
 #include <matrix_spiral_format.h>
 #include <merge_two_sorted_linked_lists.h>
 #include <convert_infix_to_postfix.h>
+#include <level_order_with_direction_change.h>
 
 /**
  * TEST(x, y) {
@@ -580,4 +581,28 @@ TEST(InfixToPostfixConverter, SampleExpressions) {
     ASSERT_EQ(ipc.getPostfix("A+B*C+D"), "ABC*+D+");
     ASSERT_EQ(ipc.getPostfix("((A+B)-C*(D/E)+F)"), "AB+CDE/*-F+");
     ASSERT_EQ(ipc.getPostfix("a+b*(c^d-e)^(f+g*h)-i"), "abcd^e-fgh*+^*+i-");
+}
+
+TEST(LevelOrderTraversalWithDirectionChange, SampleTree) {
+    BinaryTree<int> bt;
+    bt.addRoot(1);
+    BinaryTreeNode<int>* root = bt.getRoot().get();
+    root->addChild(2, BinaryTreeNode<int>::Direction::Left);
+    root->addChild(3, BinaryTreeNode<int>::Direction::Right);
+
+    root->getLeft()->addChild(4, BinaryTreeNode<int>::Direction::Left);
+    
+    root->getRight()->addChild(5, BinaryTreeNode<int>::Direction::Right);
+
+    root->getLeft()->getLeft()->addChild(6, BinaryTreeNode<int>::Direction::Left);
+    root->getLeft()->getLeft()->addChild(7, BinaryTreeNode<int>::Direction::Right);
+
+    root->getRight()->getRight()->addChild(8, BinaryTreeNode<int>::Direction::Left);
+    root->getRight()->getRight()->addChild(9, BinaryTreeNode<int>::Direction::Right);
+
+    LevelOrderTraversalWithDirectionChange lot;
+    auto res = lot.getTraversal(bt);
+    std::vector<int> expectedRes{1,2,3,5,4,9,8,7,6};
+    testArrays(res, expectedRes);
+
 }
