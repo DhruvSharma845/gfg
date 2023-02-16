@@ -44,6 +44,7 @@
 #include <merge_two_sorted_linked_lists.h>
 #include <convert_infix_to_postfix.h>
 #include <level_order_with_direction_change.h>
+#include <check_if_two_trees_are_mirror.h>
 
 /**
  * TEST(x, y) {
@@ -605,4 +606,33 @@ TEST(LevelOrderTraversalWithDirectionChange, SampleTree) {
     std::vector<int> expectedRes{1,2,3,5,4,9,8,7,6};
     testArrays(res, expectedRes);
 
+}
+
+TEST(AreTreesMirror, SampleBinaryTrees) {
+    BinaryTree<int> bt1;
+    bt1.addRoot(1);
+    BinaryTreeNode<int>* root = bt1.getRoot().get();
+    root->addChild(2, BinaryTreeNode<int>::Direction::Left);
+    root->addChild(3, BinaryTreeNode<int>::Direction::Right);
+
+    root->getLeft()->addChild(4, BinaryTreeNode<int>::Direction::Left);
+    root->getLeft()->addChild(5, BinaryTreeNode<int>::Direction::Right);
+    
+    root->getRight()->addChild(6, BinaryTreeNode<int>::Direction::Left);
+    root->getRight()->addChild(7, BinaryTreeNode<int>::Direction::Right);
+
+    BinaryTree<int> bt2;
+    bt2.addRoot(1);
+    root = bt2.getRoot().get();
+    root->addChild(3, BinaryTreeNode<int>::Direction::Left);
+    root->addChild(2, BinaryTreeNode<int>::Direction::Right);
+
+    root->getLeft()->addChild(7, BinaryTreeNode<int>::Direction::Left);
+    root->getLeft()->addChild(6, BinaryTreeNode<int>::Direction::Right);
+    
+    root->getRight()->addChild(5, BinaryTreeNode<int>::Direction::Left);
+    root->getRight()->addChild(4, BinaryTreeNode<int>::Direction::Right);
+
+    AreTreesMirror atm;
+    ASSERT_TRUE(atm.checkMirrors(bt1, bt2));
 }
