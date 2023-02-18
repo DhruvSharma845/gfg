@@ -45,6 +45,7 @@
 #include <convert_infix_to_postfix.h>
 #include <level_order_with_direction_change.h>
 #include <check_if_two_trees_are_mirror.h>
+#include <correct_two_swapped_nodes_bst.h>
 
 /**
  * TEST(x, y) {
@@ -635,4 +636,24 @@ TEST(AreTreesMirror, SampleBinaryTrees) {
 
     AreTreesMirror atm;
     ASSERT_TRUE(atm.checkMirrors(bt1, bt2));
+}
+
+TEST(CorrectTwoSwappedNodesBST, SampleBST) {
+    BinarySearchTree<int> bst1;
+    bst1.insert(6);
+    bst1.insert(10);
+    bst1.insert(2);
+    bst1.insert(1);
+    bst1.insert(3);
+    bst1.insert(7);
+    bst1.insert(12);
+    
+    bst1.getRoot()->getLeft()->setData(10);
+    bst1.getRoot()->getRight()->setData(2);
+
+    CorrectTwoSwappedNodesBST cts;
+    cts.doCorrection(bst1);
+
+    ASSERT_EQ(2, bst1.getRoot()->getLeft()->getData());
+    ASSERT_EQ(10, bst1.getRoot()->getRight()->getData());
 }
