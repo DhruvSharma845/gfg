@@ -46,6 +46,7 @@
 #include <level_order_with_direction_change.h>
 #include <check_if_two_trees_are_mirror.h>
 #include <correct_two_swapped_nodes_bst.h>
+#include <minimum_sum_from_digits_array.h>
 
 /**
  * TEST(x, y) {
@@ -656,4 +657,9 @@ TEST(CorrectTwoSwappedNodesBST, SampleBST) {
 
     ASSERT_EQ(2, bst1.getRoot()->getLeft()->getData());
     ASSERT_EQ(10, bst1.getRoot()->getRight()->getData());
+}
+
+TEST(MinimumSumFromDigitsOfArray, SampleArray) {
+    MinimumSumFromDigitsOfArray ms;
+    ASSERT_EQ(604, ms.getMinSum({6, 8, 4, 5, 2, 3}));
 }
