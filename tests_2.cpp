@@ -47,6 +47,7 @@
 #include <check_if_two_trees_are_mirror.h>
 #include <correct_two_swapped_nodes_bst.h>
 #include <minimum_sum_from_digits_array.h>
+#include <first_repeating_element_array.h>
 
 /**
  * TEST(x, y) {
@@ -662,4 +663,11 @@ TEST(CorrectTwoSwappedNodesBST, SampleBST) {
 TEST(MinimumSumFromDigitsOfArray, SampleArray) {
     MinimumSumFromDigitsOfArray ms;
     ASSERT_EQ(604, ms.getMinSum({6, 8, 4, 5, 2, 3}));
+}
+
+TEST(FirstRepeatingElement, SampleArrays) {
+    FirstRepeatingElement fre;
+
+    ASSERT_EQ(fre.getElement({10, 5, 3, 4, 3, 5, 6}), 5);
+    ASSERT_EQ(fre.getElement({6, 10, 5, 4, 9, 120, 4, 6, 10}), 6);
 }
