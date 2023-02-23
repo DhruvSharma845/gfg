@@ -1,3 +1,5 @@
+#pragma once
+
 #include <queue>
 #include <gtest/gtest.h>
 
@@ -48,6 +50,7 @@
 #include <correct_two_swapped_nodes_bst.h>
 #include <minimum_sum_from_digits_array.h>
 #include <first_repeating_element_array.h>
+#include <longest_path_dag.h>
 
 /**
  * TEST(x, y) {
@@ -670,4 +673,23 @@ TEST(FirstRepeatingElement, SampleArrays) {
 
     ASSERT_EQ(fre.getElement({10, 5, 3, 4, 3, 5, 6}), 5);
     ASSERT_EQ(fre.getElement({6, 10, 5, 4, 9, 120, 4, 6, 10}), 6);
+}
+
+TEST(LongestPathInDAG, SampleGraph) {
+    DirectedWeightedGraph dg(6);
+    dg.addEdge(0, 1, 5);
+    dg.addEdge(0, 2, 3);
+    dg.addEdge(1, 3, 6);
+    dg.addEdge(1, 2, 2);
+    dg.addEdge(2, 4, 4);
+    dg.addEdge(2, 5, 2);
+    dg.addEdge(2, 3, 7);
+    dg.addEdge(3, 5, 1);
+    dg.addEdge(3, 4, -1);
+    dg.addEdge(4, 5, -2);
+
+    LongestPathInDAG lp;
+    auto res = lp.getDistancesFromSource(dg, 1);
+    std::vector<int> expectedRes{std::numeric_limits<int>::max(), 0, 2, 9, 8, 10};
+    testArrays(res, expectedRes);
 }
