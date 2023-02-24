@@ -51,6 +51,7 @@
 #include <minimum_sum_from_digits_array.h>
 #include <first_repeating_element_array.h>
 #include <longest_path_dag.h>
+#include <next_greater_with_same_digits.h>
 
 /**
  * TEST(x, y) {
@@ -692,4 +693,12 @@ TEST(LongestPathInDAG, SampleGraph) {
     auto res = lp.getDistancesFromSource(dg, 1);
     std::vector<int> expectedRes{std::numeric_limits<int>::max(), 0, 2, 9, 8, 10};
     testArrays(res, expectedRes);
+}
+
+TEST(NextGreaterNumberWithSameDigits, SampleNumbers) {
+    NextGreaterNumberWithSameDigits ngn;
+    using namespace std::string_literals;
+    ASSERT_EQ("251678"s, ngn.getNextGreater("218765"));
+    ASSERT_EQ("536479"s, ngn.getNextGreater("534976"));
+    ASSERT_EQ("1243"s, ngn.getNextGreater("1234"));
 }
