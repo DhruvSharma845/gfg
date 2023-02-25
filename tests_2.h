@@ -52,6 +52,7 @@
 #include <first_repeating_element_array.h>
 #include <longest_path_dag.h>
 #include <next_greater_with_same_digits.h>
+#include <sort_array_order_by_other_array.h>
 
 /**
  * TEST(x, y) {
@@ -701,4 +702,11 @@ TEST(NextGreaterNumberWithSameDigits, SampleNumbers) {
     ASSERT_EQ("251678"s, ngn.getNextGreater("218765"));
     ASSERT_EQ("536479"s, ngn.getNextGreater("534976"));
     ASSERT_EQ("1243"s, ngn.getNextGreater("1234"));
+}
+
+TEST(SortArrayOrderedByAnotherArray, SampleArray) {
+    SortArrayOrderedByAnotherArray sa;
+    auto res = sa.doSort({2, 1, 2, 5, 7, 1, 9, 3, 6, 8, 8}, {2, 1, 8, 3});
+    std::vector<int> expectedRes{2, 2, 1, 1, 8, 8, 3, 5, 6, 7, 9};
+    testArrays(res, expectedRes);
 }
