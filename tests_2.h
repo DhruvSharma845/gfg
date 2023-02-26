@@ -53,6 +53,7 @@
 #include <longest_path_dag.h>
 #include <next_greater_with_same_digits.h>
 #include <sort_array_order_by_other_array.h>
+#include <smallest_number_with_digits_and_sum.h>
 
 /**
  * TEST(x, y) {
@@ -709,4 +710,10 @@ TEST(SortArrayOrderedByAnotherArray, SampleArray) {
     auto res = sa.doSort({2, 1, 2, 5, 7, 1, 9, 3, 6, 8, 8}, {2, 1, 8, 3});
     std::vector<int> expectedRes{2, 2, 1, 1, 8, 8, 3, 5, 6, 7, 9};
     testArrays(res, expectedRes);
+}
+
+TEST(SmallestNumWithDigitsAndSum, SampleValues) {
+    SmallestNumWithDigitsAndSum sn;
+    ASSERT_EQ(18, sn.getSmallestNum(2, 9));
+    ASSERT_EQ(299, sn.getSmallestNum(3, 20));
 }
