@@ -54,6 +54,7 @@
 #include <next_greater_with_same_digits.h>
 #include <sort_array_order_by_other_array.h>
 #include <smallest_number_with_digits_and_sum.h>
+#include <coin_change.h>
 
 /**
  * TEST(x, y) {
@@ -716,4 +717,10 @@ TEST(SmallestNumWithDigitsAndSum, SampleValues) {
     SmallestNumWithDigitsAndSum sn;
     ASSERT_EQ(18, sn.getSmallestNum(2, 9));
     ASSERT_EQ(299, sn.getSmallestNum(3, 20));
+}
+
+TEST(CoinChange, SampleCoins) {
+    CoinChange cc;
+    ASSERT_EQ(4, cc.getWaysToMakeChange(4, {1,2,3}));
+    ASSERT_EQ(5, cc.getWaysToMakeChange(10, {2, 5, 3, 6}));
 }
